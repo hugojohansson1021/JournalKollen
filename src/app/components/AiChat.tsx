@@ -56,7 +56,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 
   return (
     <section className="bg-white shadow-2xl mt-10" style={{borderRadius: '20px'}}>
-    <div style={{ fontFamily: 'Arial, sans-serif', width: '89vw', maxWidth: '500px', margin: 'auto', border: '1x solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor:'#000',  }}>
+    <div style={{ fontFamily: 'Arial, sans-serif', width: '110vw', maxWidth: '900px', margin: 'auto', border: '1x solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor:'#000',  }}>
       <div style={{ padding: '10px', backgroundColor: '#e31837', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
         <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
       </div>

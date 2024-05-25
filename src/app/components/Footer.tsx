@@ -47,7 +47,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
   const currentTextConfig = isSwedish ? textConfig.sv : textConfig.en;
 
   return (
-    <footer className="bg-[#e31837] text-white w-full mt-12 py-12">
+    <footer className="bg-[#e31837] text-white w-full py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
           <div className="mb-8 sm:mb-0">

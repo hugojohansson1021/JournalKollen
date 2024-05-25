@@ -1,6 +1,5 @@
 'use client';
-import Image from "next/image";
-import Chatbot from "./components/AiChat";
+
 import Navbar from "./components/Navbar";
 import { SetStateAction, useState } from "react";
 import Header from "./components/Header";
@@ -8,6 +7,7 @@ import Hurfunkar from "./components/Hurfunkar";
 import Securepage from "./components/Varfor";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import Chatbot from "./components/AiChat";
 
 
 export default function Home() {
@@ -20,8 +20,8 @@ export default function Home() {
 
      <Header isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
-     
      <Chatbot apiEndpoint="/api/ai" />
+     
    
 
      <Hurfunkar isSwedish={isSwedish} setIsSwedish={setIsSwedish} />

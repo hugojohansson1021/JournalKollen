@@ -6,7 +6,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
 
-const assistantId = 'asst_cQmrWFPKEZX2nFVHJWejPgaR';
+const assistantId = 'asst_kEblhwMnLn6hr7uTZ4VqfpqA';
 
 export async function POST(req: NextRequest) {
   if (!req.body) {
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const thread = await openai.beta.threads.create();
     console.log("creating thread:", thread)
     await openai.beta.threads.messages.create(thread.id, { role: "user", content: question });
-    const run = await openai.beta.threads.runs.create(thread.id, { assistant_id: assistant.id, instructions: "Svara på användarens fråga och använd informationen som är upladdad" });
+    const run = await openai.beta.threads.runs.create(thread.id, { assistant_id: assistant.id, });
 
     await checkRunStatus(thread.id, run.id);
 

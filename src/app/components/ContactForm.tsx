@@ -24,7 +24,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
       messagePlaceholder: 'Meddelande',
       sendButton: 'Skicka Meddelande',
       emailButton: 'Skicka E-post',
-      statusSuccess: 'Meddelandet skickades!, Vi återkommer såfort vi kan',
+      statusSuccess: 'Meddelandet skickades! Vi återkommer såfort vi kan',
       statusFailure: 'Misslyckades med att skicka meddelandet.',
       statusError: 'Ett fel inträffade vid skickandet av meddelandet.',
     },
@@ -121,11 +121,11 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
           <button type="submit" className="bg-[#e31837] text-white py-2 px-4 rounded">
             {currentTextConfig.sendButton}
           </button>
-          <button type="button" onClick={handleEmailClick} className="bg-[#e31837] text-white py-2 px-4 rounded">
+          <button type="button" onClick={handleEmailClick} className="bg-[#e31837] text-white py-2 px-4 rounded mb-10">
             {currentTextConfig.emailButton}
           </button>
         </form>
-        {status && <p className="text-center mt-4 text-black">{status}</p>}
+        {status && <p className="text-center mt-4 mb-5 text-black">{status}</p>}
       </div>
     </section>
   );
