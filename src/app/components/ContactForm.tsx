@@ -99,7 +99,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             placeholder={currentTextConfig.namePlaceholder}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
+            className="w-full max-w-md p-2 m-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
             required
           />
           <input
@@ -107,14 +107,14 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             placeholder={currentTextConfig.emailPlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 rounded bg-[#FAF8F6]  text-black"
+            className="w-full max-w-md p-2 m-2 border border-gray-300 rounded bg-[#FAF8F6]  text-black"
             required
           />
           <textarea
             placeholder={currentTextConfig.messagePlaceholder}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
+            className="w-full max-w-md p-2 m-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
             rows={5}
             required
           />
