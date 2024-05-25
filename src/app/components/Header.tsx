@@ -11,8 +11,8 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       descriptiontwo: 'You can also chat with an AI bot I built that has information about who I am and what I did earlier in my life and so on.',
     },
     sv: {
-      title: 'Välkommen till Journal Förklaring', 
-      description: 'Precis som Jurister har läkare ett eget språk, ibland med många akronymer, förkortningar och siffror.',
+      title: 'Välkommen till Journal Kollen', 
+      description: 'Vi erbjuder en tjänst där kunder kan översätta sina läkarsvar till enklare text som förklarar vad svaret betyder',
       descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse. ',
     },
   };

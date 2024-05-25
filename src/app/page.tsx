@@ -6,6 +6,7 @@ import { SetStateAction, useState } from "react";
 import Header from "./components/Header";
 import Hurfunkar from "./components/Hurfunkar";
 import Securepage from "./components/Varfor";
+import ContactForm from "./components/ContactForm";
 
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);
@@ -24,6 +25,8 @@ export default function Home() {
      <Hurfunkar isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
      <Securepage isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
+
+     <ContactForm isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
     </main>
   );
 }

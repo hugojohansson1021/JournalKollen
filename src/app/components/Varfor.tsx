@@ -15,13 +15,13 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
       ],
     },
     sv: {
-      title: 'Din Datasäkerhet är Vår Prioritet',
-      description: 'Vi vidtar omfattande åtgärder för att säkerställa att dina data är säkra och skyddade.',
+      title: 'Varför Journal Kollen?',
+      description: 'Vi vet att vänta på provsvar från 1177 eller läkare kan vara stressamt, när provresultaten sedan väl mottages så kan det vara svårt att förstå svaret, denna tjänst låter en AI översätta siffror och akronymer till förstålig text för gemene person, nedan finns några anledningar att använda våran tjänst för att hjälpa dig',
       points: [
-        { title: 'Datakryptering', description: 'All data som laddas upp till vår tjänst krypteras både under överföring och vid lagring med branschstandard krypteringsprotokoll.' },
-        { title: 'Säkra Servrar', description: 'Våra servrar finns i mycket säkra datacenter med övervakning dygnet runt och avancerade säkerhetsåtgärder.' },
-        { title: 'Efterlevnad av Integritetslagar', description: 'Vi följer alla relevanta integritetslagar och -förordningar för att säkerställa att dina data hanteras med största omsorg och sekretess.' },
-        { title: 'Åtkomstkontroll', description: 'Endast auktoriserad personal har tillgång till dina data, och all åtkomst loggas och övervakas för säkerhetsändamål.' },
+        { title: 'Akronym översättning', description: 'Ett provsvar kan ibland bestå av mestadels akronymer och förkortningar, detta är något gemene person måste leta upp på egen hand men med våran tjänst så förklaras vad varje akronym ocg förkottning innefattar och betyder.  ' },
+        { title: 'Avancerad retorik', description: 'Precis som jurister, har läkare ett eget språk med avancerad retorik för att kunna bedriva tydliga svar, detta är ett språk som kan avra svårt att förstå, våran tjänst hjälper till att förklara vad som menas.' },
+        { title: 'Förklaring', description: 'Om en kund laddar upp en lista på provsvar med context vad provet handlar om kommer våran tjänst hjäpa till att ge en helhets förklaring på vad som ligger inom referensvärden och vad respektive betyder. ' },
+        { title: 'Säkerhet', description: 'Våran tjänst sammlar ingen data, sparar ingen data eller ser ingen data, eftersom kunder kommer ladda upp test resultat och annan känslig information har vi skapat ett system där vi kan inte se vad kunderna frågar eller få för svar av AI:n.' },
       ],
     },
   };
