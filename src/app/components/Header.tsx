@@ -18,7 +18,7 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
   };
 
   return (
-    <section className=" bg-transparent py-12 px-4 sm:px-6 lg:px-8 rounded-3xl mt-24">
+    <section className="bg-white py-12 w-full mt-24">
       <div className="max-w-7xl mx-auto">
         
           <div className="flex flex-col justify-center text-center">

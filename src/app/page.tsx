@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import { SetStateAction, useState } from "react";
 import Header from "./components/Header";
 import Hurfunkar from "./components/Hurfunkar";
-import Securepage from "./components/securepage";
+import Securepage from "./components/Varfor";
 
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);

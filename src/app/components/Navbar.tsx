@@ -32,20 +32,20 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
     en: {
       descriptionone: 'HomePage',
       descriptiontwo: 'How it works',
-      descriptiontree: 'Security',
+      descriptiontree: 'Why?',
       descriptionfour: 'Contact me',
     },
     sv: {
       descriptionone: 'Startsida',
-      descriptiontwo: 'Hur funkar det',
-      descriptiontree: 'Säkerhet',
+      descriptiontwo: 'Hur funkar det?',
+      descriptiontree: 'Varför',
       descriptionfour: 'Kontakta',
     },
   };
 
   return (
     <>
-      <nav className="fixed top-5 left-5 right-5 z-50 p-4 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#e31837' }}>
+      <nav className="fixed w-full z-50 p-4 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#e31837' }}>
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
@@ -72,7 +72,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                 event.stopPropagation();
                 debouncedHandleLinkClick('');
               }}>
-                <li className=" rounded-full text-white text-xl text-bold px-4 py-2  cursor-pointer hover:underline decoration-teal-400 md:decoration-teal-400">
+                <li className=" rounded-full text-white text-xl text-bold px-4 py-2  cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptionone : textConfig.en.descriptionone}
                 </li>
               </Link>
@@ -80,7 +80,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                 event.stopPropagation();
                 debouncedHandleLinkClick('whoami');
               }}>
-                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-teal-400 md:decoration-teal-400">
+                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
                 </li>
               </Link>
@@ -88,7 +88,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                 event.stopPropagation();
                 debouncedHandleLinkClick('myprods');
               }}>
-                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-teal-400 md:decoration-teal-400">
+                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontree : textConfig.en.descriptiontree}
                 </li>
               </Link>
@@ -96,7 +96,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                 event.stopPropagation();
                 debouncedHandleLinkClick('contactme');
               }}>
-                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-teal-400 md:decoration-teal-400">
+                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptionfour : textConfig.en.descriptionfour}
                 </li>
               </Link>
