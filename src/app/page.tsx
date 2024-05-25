@@ -9,6 +9,7 @@ import Securepage from "./components/Varfor";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 
+
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);
   return (
@@ -28,7 +29,10 @@ export default function Home() {
      <Securepage isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
      <ContactForm isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
-     <Footer/>
+
+     <Footer isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
+    
+    
     </main>
   );
 }

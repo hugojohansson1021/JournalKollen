@@ -71,7 +71,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
   };
 
   return (
-    <section className="bg-white w-full">
+    <section className="bg-white w-full ">
       <div className="max-w-7xl mx-auto " >
         <div className="flex flex-col justify-center text-center mb-8 ">
           <motion.h2
