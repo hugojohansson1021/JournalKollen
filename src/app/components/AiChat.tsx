@@ -12,7 +12,7 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förklaring AI', botAvatarSrc = '/Bot.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förklaring AI', botAvatarSrc = '/Doctor.png' }) => {
   const [question, setQuestion] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
     { type: 'response', text: 'Jag är en chatbot som kan hjälpa dig förstå din läkar svar eller provsvar' },

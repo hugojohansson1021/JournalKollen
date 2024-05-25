@@ -71,15 +71,15 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
   };
 
   return (
-    <section className="bg-[#FAF8F6] w-full mt-12 shadow-lg">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col justify-center text-center mb-8">
+    <section className="bg-white w-full">
+      <div className="max-w-7xl mx-auto " >
+        <div className="flex flex-col justify-center text-center mb-8 ">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-black mb-4"
+            className="text-3xl font-bold text-black mb-4 mt-12 "
           >
             {currentTextConfig.title}
           </motion.h2>
@@ -99,7 +99,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             placeholder={currentTextConfig.namePlaceholder}
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 rounded text-black"
+            className="w-full max-w-md p-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
             required
           />
           <input
@@ -107,14 +107,14 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             placeholder={currentTextConfig.emailPlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 rounded text-black"
+            className="w-full max-w-md p-2 border border-gray-300 rounded bg-[#FAF8F6]  text-black"
             required
           />
           <textarea
             placeholder={currentTextConfig.messagePlaceholder}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full max-w-md p-2 border border-gray-300 rounded text-black"
+            className="w-full max-w-md p-2 border border-gray-300 bg-[#FAF8F6]  rounded text-black"
             rows={5}
             required
           />
