@@ -8,6 +8,8 @@ const openai = new OpenAI({
 
 const assistantId = 'asst_kEblhwMnLn6hr7uTZ4VqfpqA';
 
+export const maxDuration = 50;
+
 export async function POST(req: NextRequest) {
   if (!req.body) {
     return new Response(JSON.stringify({ error: 'Förfrågan saknar kropp' }), { status: 400 });
