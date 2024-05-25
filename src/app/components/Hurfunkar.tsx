@@ -1,18 +1,17 @@
 'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
-/* eslint-disable react/no-unescaped-entities */
 
-const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish, setIsSwedish }) => {
+const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish }) => {
   const textConfig = {
     en: {
       title: 'Welcome..!',
       description: 'Here you can find information about who I am and what I like as well as my projects and interests',
       descriptiontwo: 'You can also chat with an AI bot I built that has information about who I am and what I did earlier in my life and so on.',
       steps: [
-        { title: 'Step 1', description: 'Upload your medical documents.' },
-        { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.' },
-        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.' },
+        { title: 'Step 1', description: 'Upload your medical documents.', icon: 'h' },
+        { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.', icon: 'https://example.com/step2-icon.png' },
+        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: 'https://example.com/step3-icon.png' },
       ],
     },
     sv: {
@@ -20,9 +19,9 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       description: 'Nedan kan du se steg för steg hur du som kund kan använda våran tjänst för att översätta "Läkare" till svenska',
       descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.',
       steps: [
-        { title: 'Steg 1', description: 'Ladda upp dina medicinska dokument.' },
-        { title: 'Steg 2', description: 'Vårt AI översätter och förklarar innehållet på svenska.' },
-        { title: 'Steg 3', description: 'Få en detaljerad och förståelig förklaring.' },
+        { title: 'Steg 1', description: 'Ladda upp dina medicinska dokument.', icon: '/PDF-icon.png' },
+        { title: 'Steg 2', description: 'Vårt AI översätter och förklarar innehållet på svenska.', icon: '/Swish-icon.png' },
+        { title: 'Steg 3', description: 'Få en detaljerad och förståelig förklaring.', icon: '/Chat-icon.png' },
       ],
     },
   };
@@ -42,6 +41,8 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
           >
             {currentTextConfig.title}
           </motion.h2>
+
+          
           <motion.h3
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -50,8 +51,6 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
             className="text-black text-lg mb-8"
           >
             {currentTextConfig.description}
-            <br />
-            <br />
             
           </motion.h3>
           <div className="flex flex-wrap justify-center gap-6 mt-8">
@@ -65,6 +64,7 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
                 className="bg-[#FAF8F6] text-black p-6 rounded-lg shadow-lg max-w-xs"
               >
                 <h4 className="text-xl font-semibold mb-4">{step.title}</h4>
+                <img src={step.icon} alt={`Icon for ${step.title}`} className="w-12 h-15 mx-auto mb-5" />
                 <p className="text-gray-700">{step.description}</p>
               </motion.div>
             ))}
