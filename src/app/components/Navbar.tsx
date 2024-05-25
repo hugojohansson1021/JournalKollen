@@ -70,7 +70,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
             <ul className="relative w-full text-center md:flex md:flex-row md:space-x-4 ">
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
-                debouncedHandleLinkClick('');
+                debouncedHandleLinkClick('Home');
               }}>
                 <li className=" rounded-full text-white text-xl text-bold px-4 py-2  cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptionone : textConfig.en.descriptionone}
@@ -78,7 +78,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
               </Link>
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
-                debouncedHandleLinkClick('whoami');
+                debouncedHandleLinkClick('Hurfunkardet');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
@@ -86,7 +86,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
               </Link>
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
-                debouncedHandleLinkClick('myprods');
+                debouncedHandleLinkClick('Varför');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontree : textConfig.en.descriptiontree}
@@ -94,7 +94,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
               </Link>
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
-                debouncedHandleLinkClick('contactme');
+                debouncedHandleLinkClick('Kontakta');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptionfour : textConfig.en.descriptionfour}

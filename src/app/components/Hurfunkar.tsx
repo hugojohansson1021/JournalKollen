@@ -29,7 +29,7 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
   const currentTextConfig = isSwedish ? textConfig.sv : textConfig.en;
 
   return (
-    <section className="bg-white py-12 w-full mt-24">
+    <section id='Hurfunkardet' className="bg-white py-12 w-full mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col justify-center text-center">
           <motion.h2
