@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Hurfunkar from "./components/Hurfunkar";
 import Securepage from "./components/Varfor";
 import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);
@@ -27,6 +28,7 @@ export default function Home() {
      <Securepage isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
      <ContactForm isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
+     <Footer/>
     </main>
   );
 }
