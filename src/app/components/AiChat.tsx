@@ -12,7 +12,7 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förklaring AI', botAvatarSrc = '/Doctor.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förklaring AI', botAvatarSrc = '/Bot.png' }) => {
   const [question, setQuestion] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
     { type: 'response', text: 'Jag är en chatbot som kan hjälpa dig förstå din läkar svar eller provsvar' },
@@ -55,8 +55,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
   
 
   return (
-    <section className="bg-white shadow-2xl mt-10" style={{borderRadius: '20px'}}>
-    <div style={{ fontFamily: 'Arial, sans-serif', width: '110vw', maxWidth: '900px', margin: 'auto', border: '1x solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor:'#000',  }}>
+    <section className="bg-white  mt-10 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-[900px] shadow-2xl" style={{borderRadius: '20px'}}>
+    <div className='' style={{ fontFamily: 'Arial, sans-serif', margin: 'auto', border: '1x solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor:'#000',  }}>
       <div style={{ padding: '10px', backgroundColor: '#e31837', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
         <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
       </div>
