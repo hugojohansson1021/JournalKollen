@@ -11,6 +11,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.6",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "next": "14.2.3",
     "openai": "^4.47.1",
     "pdf-parse": "^1.1.1",

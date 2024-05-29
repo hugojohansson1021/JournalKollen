@@ -33,12 +33,27 @@ export async function POST(req: NextRequest) {
     const messagesResponse = await openai.beta.threads.messages.list(thread.id);
     console.log(messagesResponse)
     let assistantResponse = "Inget svar mottaget";
-    if (messagesResponse.data) {
-      const assistantMessage = messagesResponse.data.find(m => m.role === 'assistant');
-      if (assistantMessage && assistantMessage.content) {
-        assistantResponse = assistantMessage.content.map(c => 'text' in c && c.text ? c.text.value : '').join('\n');
-      }
-    }
+    // Inside your api/ai/route.ts
+
+if (messagesResponse.data) {
+  const assistantMessage = messagesResponse.data.find(m => m.role === 'assistant');
+  if (assistantMessage && assistantMessage.content) {
+    assistantResponse = assistantMessage.content
+      .map(c => {
+        if ('text' in c && c.text) {
+          let text = c.text.value;
+          text = text.replace(/### (.+?)(?=\n|$)/g, '<h3>$1</h3>'); // Convert ### titles to h3
+          text = text.replace(/#### (.+?)(?=\n|$)/g, '<h4>$1</h4>'); // Convert #### titles to h4
+          text = text.replace(/\n/g, '<br />'); // Replace new lines with <br />
+          return text;
+        }
+        return '';
+      })
+      .join('\n');
+  }
+}
+
+
 
     return new Response(JSON.stringify({ response: assistantResponse }), { status: 200 });
   } catch (error: any) {
