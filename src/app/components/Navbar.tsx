@@ -30,13 +30,13 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
 
   const textConfig = {
     en: {
-      descriptionone: 'HomePage',
+      descriptionone: 'AI',
       descriptiontwo: 'How it works',
       descriptiontree: 'Why?',
       descriptionfour: 'Contact me',
     },
     sv: {
-      descriptionone: 'Startsida',
+      descriptionone: 'AI',
       descriptiontwo: 'Hur funkar det?',
       descriptiontree: 'Varför',
       descriptionfour: 'Kontakta',

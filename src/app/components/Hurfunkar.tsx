@@ -9,9 +9,9 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       description: 'Here you can find information about who I am and what I like as well as my projects and interests',
       descriptiontwo: 'You can also chat with an AI bot I built that has information about who I am and what I did earlier in my life and so on.',
       steps: [
-        { title: 'Step 1', description: 'Upload your medical documents.', icon: 'h' },
-        { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.', icon: 'https://example.com/step2-icon.png' },
-        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: 'https://example.com/step3-icon.png' },
+        { title: 'Step 1', description: 'Upload your medical documents.', icon: '/PDF-icon.png' },
+        { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.', icon: '/Swish-icon.png' },
+        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: '/Chat-icon.png' },
       ],
     },
     sv: {
