@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish, setIsSwedish }) => {
   const textConfig = {
     en: {
-      title: 'Welcome..!',
-      description: 'Here you can find information about who I am and what I like as well as my projects and interests',
-      descriptiontwo: 'You can also chat with an AI bot I built that has information about who I am and what I did earlier in my life and so on.',
+      title: 'Welcome to Journalkollen',
+      description: 'We offer a service where customers can translate their doctors answers into simpler text that explains what the answer means',
+      descriptiontwo: 'We have developed an AI tool where customers can upload medical answers, test answers or similar and have it translated into Swedish. With a better explanation with more understanding.',
     },
     sv: {
       title: 'Välkommen till Journal Kollen', 

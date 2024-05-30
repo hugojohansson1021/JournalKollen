@@ -32,13 +32,13 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
     en: {
       descriptionone: 'AI',
       descriptiontwo: 'How it works',
-      descriptiontree: 'Why?',
+      descriptiontree: 'Why AI',
       descriptionfour: 'Contact me',
     },
     sv: {
       descriptionone: 'AI',
-      descriptiontwo: 'Hur funkar det?',
-      descriptiontree: 'Varför',
+      descriptiontwo: 'Hur funkar det',
+      descriptiontree: 'Varför AI',
       descriptionfour: 'Kontakta',
     },
   };

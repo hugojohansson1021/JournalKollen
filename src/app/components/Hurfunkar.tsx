@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish }) => {
   const textConfig = {
     en: {
-      title: 'Welcome..!',
-      description: 'Here you can find information about who I am and what I like as well as my projects and interests',
-      descriptiontwo: 'You can also chat with an AI bot I built that has information about who I am and what I did earlier in my life and so on.',
+      title: 'How does it work?',
+      description: 'Below you can see step by step how you as a customer can use our service to translate "Doctor" into Swedish',
+      descriptiontwo: 'We have developed an AI tool where customers can upload medical answers, test answers or similar and have it translated into Swedish. With a better explanation with more understanding.',
       steps: [
         { title: 'Step 1', description: 'Upload your medical documents.', icon: '/PDF-icon.png' },
         { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.', icon: '/Swish-icon.png' },
