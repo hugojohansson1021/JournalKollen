@@ -5,13 +5,13 @@ import { motion } from 'framer-motion';
 const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish }) => {
   const textConfig = {
     en: {
-      title: 'Your Data Security is Our Priority',
-      description: 'We take extensive measures to ensure that your data is safe and secure.',
+      title: 'Why Journal Kollen?',
+      description: 'We know waiting for test results from 1177 or doctors can be stressful, once the test results are received it can be difficult to understand the answer, this service allows an AI to translate numbers and acronyms into understandable text for the common person, below are some reasons to use our service to help you',
       points: [
-        { title: 'Data Encryption', description: 'All data uploaded to our service is encrypted both in transit and at rest using industry-standard encryption protocols.' },
-        { title: 'Secure Servers', description: 'Our servers are located in highly secure data centers with 24/7 monitoring and advanced security measures.' },
-        { title: 'Privacy Compliance', description: 'We comply with all relevant privacy laws and regulations, ensuring that your data is handled with the utmost care and confidentiality.' },
-        { title: 'Access Control', description: 'Only authorized personnel have access to your data, and all access is logged and monitored for security purposes.' },
+        { title: 'Acronym translation', description: 'A test answer can sometimes consist mostly of acronyms and abbreviations, this is something the average person has to look up on their own, but with our service it is explained what each acronym and abbreviation includes and means.' },
+        { title: 'Advanced rhetoric', description: 'Just like lawyers, doctors have their own language with advanced rhetoric to be able to provide clear answers, this is a language that can be difficult to understand, our service helps to explain what is meant.' },
+        { title: 'Explanation', description: 'If a customer uploads a list of test answers with context of what the test is about, our service will help to provide a comprehensive explanation of what is within the reference values ​​and what each means.' },
+        { title: 'Security', description: 'Our service does not collect any data, save any data or see any data, because customers will upload test results and other sensitive information, we have created a system where we cannot see what the customers ask or get answers from the AI.' },
       ],
     },
     sv: {
