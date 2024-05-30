@@ -13,7 +13,7 @@ import Chatbot from "./components/AiChat";
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ">
+    <main className=" flex min-h-screen flex-col items-center justify-between ">
 
 
      <Navbar isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
