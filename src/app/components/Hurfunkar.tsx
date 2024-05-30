@@ -10,7 +10,7 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       descriptiontwo: 'We have developed an AI tool where customers can upload medical answers, test answers or similar and have it translated into Swedish. With a better explanation with more understanding.',
       steps: [
         { title: 'Step 1', description: 'Upload your medical documents.', icon: '/PDF-icon.png' },
-        { title: 'Step 2', description: 'Our AI translates and explains the content in Swedish.', icon: '/Swish-icon.png' },
+        { title: 'Step 2', description: 'Pay with Swish to reccive the Ai genereted translaition', icon: '/Swish-icon.png' },
         { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: '/Chat-icon.png' },
       ],
     },
