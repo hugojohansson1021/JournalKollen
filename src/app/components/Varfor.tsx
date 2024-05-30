@@ -46,7 +46,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-gray-700 text-lg mb-6"
+            className="text-gray-700 text-lg mb-6 mr-5 ml-5"
           >
             {currentTextConfig.description}
           </motion.p>

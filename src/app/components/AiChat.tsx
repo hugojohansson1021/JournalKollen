@@ -1,4 +1,4 @@
-import React, { FormEvent, useRef, useState } from 'react';
+import React, { FormEvent, useRef, useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -21,8 +21,15 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [hasResponse, setHasResponse] = useState<boolean>(false);
+  const [canvasImage, setCanvasImage] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const pdfContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (hasResponse) {
+      generateCanvasAndDownloadPdf();
+    }
+  }, [hasResponse]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,20 +64,36 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
     }
   };
 
-  const downloadPdf = async () => {
+  const generateCanvasAndDownloadPdf = async () => {
     const pdfContent = pdfContentRef.current;
     if (!pdfContent) return;
 
-    const canvas = await html2canvas(pdfContent, { backgroundColor: '#ffffff' });
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF();
-    const imgProps = pdf.getImageProperties(imgData);
-    const pdfWidth = pdf.internal.pageSize.getWidth() - 20; // Adding margin
-    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    const marginLeft = 10;
-    const marginTop = 10;
+    console.log('PDF content:', pdfContent.innerHTML); // Log content for debugging
 
-    pdf.addImage(imgData, 'PNG', marginLeft, marginTop, pdfWidth, pdfHeight);
+    const scale = 2; // Use a higher scale factor for better resolution
+    const canvas = await html2canvas(pdfContent, { backgroundColor: '#ffffff', scale: scale });
+    const imgData = canvas.toDataURL('image/png');
+    setCanvasImage(imgData); // Set the canvas image to render it on the screen for debugging
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth() - 20; // Adding margin
+    const pdfHeight = pdf.internal.pageSize.getHeight() - 20; // Adding margin
+    let imgProps = pdf.getImageProperties(imgData);
+    let imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+    let heightLeft = imgHeight;
+    let position = 10;
+
+    pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
+    heightLeft -= pdfHeight;
+
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
+      heightLeft -= pdfHeight;
+    }
+
     pdf.save('AI_Response.pdf');
   };
 
@@ -119,12 +142,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
             Sök
           </button>
         </form>
-        <button onClick={downloadPdf} disabled={!hasResponse} style={{ margin: '10px', padding: '10px 15px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: hasResponse ? 1 : 0.5 }}>
+        <button onClick={generateCanvasAndDownloadPdf} disabled={!hasResponse} style={{ margin: '10px', padding: '10px 15px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: hasResponse ? 1 : 0.5 }}>
           Ladda ner PDF
         </button>
         {/* Hidden div for PDF content */}
-        <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
-          <div ref={pdfContentRef} style={{ color: 'black', fontSize: '18px', lineHeight: '1.6', padding: '20px' }}>
+        <div style={{ position: 'absolute', top: '-9999px', left: '0', width: '100%', height: 'auto', overflow: 'hidden', opacity: 0 }}>
+          <div ref={pdfContentRef} style={{ color: 'black', fontSize: '22px', lineHeight: '1.8', padding: '20px' }}>
             {messages.filter(message => message.type === 'response' && message.text !== 'Jag är en chatbot som kan hjälpa dig förstå din läkar svar eller provsvar')
               .map((message, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
@@ -133,14 +156,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
               ))}
           </div>
         </div>
+        {/* Render the canvas on the screen for debugging */}
+        {canvasImage && (
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <h2>Canvas Preview</h2>
+            <img src={canvasImage} alt="Canvas Preview" style={{ border: '1px solid #000' }} />
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default Chatbot;
-
-
-
 
 
