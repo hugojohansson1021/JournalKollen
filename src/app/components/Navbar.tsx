@@ -45,7 +45,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
 
   return (
     <>
-      <nav className="fixed w-full z-50 p-4 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#e31837' }}>
+      <nav className="fixed w-full z-50 p-2 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#e31837' }}>
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
@@ -66,7 +66,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
 
           {/* Menylänkar */}
           <div className={`absolute md:relative top-full left-0 right-0 md:top-auto mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'} flex-col items-center md:flex md:flex-row`}>
-            <div className="absolute top-0 left-0 w-full h-full bg-gray-600 bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
+            <div className="absolute top-0 mr-5 ml-5 w-full h-full bg-gray-700 bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
             <ul className="relative w-full text-center md:flex md:flex-row md:space-x-4 ">
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
@@ -103,7 +103,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
             </ul>
 
             {/* Toggle switch */}
-            <div className="flex items-center space-x-2 mt-4 md:mt-0 ">
+            <div className="flex items-center space-x-2 mt-4 mb-5 ">
               <span className={`text-white blur-none ${isSwedish ? 'font-bold blur-none text-black' : ''}`}>SV</span>
               <label className="inline-flex relative items-center cursor-pointer">
                 <input
