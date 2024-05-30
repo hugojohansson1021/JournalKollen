@@ -1,8 +1,8 @@
-// lib/googleAnalytics.js
+// components/GoogleAnalytics.js
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { GA_TRACKING_ID, pageview } from '../utils/gtag';
+import { pageview } from '../utils/gtag';
 
 const GoogleAnalytics = () => {
   const router = useRouter();
