@@ -15,15 +15,20 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       title: 'Välkommen till Journal Kollen', 
       description: (
         <span>
-          Vi erbjuder en tjänst där kunder kan <span className="underline">översätta</span> läkarsvar eller provsvar för att få en bredare uppfattning om resultatet
+          Vi erbjuder en tjänst där kunder kan <span className="underline">översätta läkarsvar eller provsvar</span> för att få en bredare uppfattning om resultatet
         </span>
       ),
       descriptiontwo:(
         <span>
-          Vi har utvecklat ett <span className="underline"> AI verktyg</span> där kunder kan ladda upp läkarsvar, provsvar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.
+          Vi har utvecklat ett <span className="underline"> AI verktyg</span> där kunder kan ladda upp läkarsvar, provsvar eller likanande och få det översatt till svenska.
         </span>
       ),
-      descriptiontre: ' Testa våran Beta version Gratis nedan  ',
+      descriptiontre: (
+        <span>
+          Testa våran <span className="underline">Beta version</span> Gratis nedan
+        </span>
+      ),
+      
     },
   };
 
