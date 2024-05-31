@@ -9,11 +9,13 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       title: 'Welcome to Journalkollen',
       description: 'We offer a service where customers can translate their doctors answers into simpler text that explains what the answer means',
       descriptiontwo: 'We have developed an AI tool where customers can upload medical answers, test answers or similar and have it translated into Swedish. With a better explanation with more understanding.',
+      descriptiontre: ' Try our Beta version free ',
     },
     sv: {
       title: 'Välkommen till Journal Kollen', 
       description: 'Vi erbjuder en tjänst där kunder kan översätta sina läkarsvar till enklare text som förklarar vad svaret betyder',
-      descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse. ',
+      descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.  ',
+      descriptiontre: ' Testa våran Beta version Gratis nedan  ',
     },
   };
 
@@ -42,6 +44,9 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
               <br />
               <br />
               {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
+              <br />
+              <br />
+              {isSwedish ? textConfig.sv.descriptiontre : textConfig.en.descriptiontre}
             </motion.h3>
           
           
