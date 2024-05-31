@@ -78,6 +78,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 
     console.log('PDF content:', pdfContent.innerHTML); // Log content for debugging
 
+    // Set a fixed width for the PDF content to ensure consistent text size
+    const originalWidth = pdfContent.style.width;
+    pdfContent.style.width = '800px';
+
     const scale = 2; // Use a higher scale factor for better resolution
     const canvas = await html2canvas(pdfContent, { backgroundColor: '#ffffff', scale: scale });
     const imgData = canvas.toDataURL('image/png');
@@ -107,6 +111,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
     }
 
     pdf.save('AI_Response.pdf');
+
+    // Reset the width of the PDF content
+    pdfContent.style.width = originalWidth;
   };
 
   return (
@@ -155,10 +162,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
             Översätt text
           </button>
         </form>
-        <div style={{ display: 'flex', alignItems: 'center', margin: '10px' }}>
-          <button onClick={generateCanvasAndDownloadPdf} disabled={!hasResponse} style={{ padding: '10px 15px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: hasResponse ? 1 : 0.5 }}>
-            Ladda ner översättning PDF
-          </button>
+        <div style={{ padding: '10px', backgroundColor: '#f5f5f5', borderTop: '1px solid #ddd', textAlign: 'center' }}>
           <label className='text-black' style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', position: 'relative' }}>
             <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '5px' }} />
             Användarvillkor
@@ -192,4 +196,5 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 };
 
 export default Chatbot;
+
 
