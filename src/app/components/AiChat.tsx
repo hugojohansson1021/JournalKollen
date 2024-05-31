@@ -158,7 +158,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
           <textarea value={question} rows={3} onChange={(e) => setQuestion(e.target.value)} placeholder="Klistra in ditt läkarsvar här..." disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
-          <button type="submit" disabled={isLoading} style={{ padding: '5px 35px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
+          <button type="submit" disabled={isLoading} style={{ padding: '5px 10px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
             Översätt text
           </button>
         </form>
@@ -174,7 +174,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         
         {/* Hidden div for PDF content */}
         <div style={{ position: 'absolute', top: '-9999px', left: '0', width: '100%', height: 'auto', overflow: 'hidden', opacity: 0 }}>
-          <div ref={pdfContentRef} style={{ color: 'black', fontSize: '22px', lineHeight: '1.8', padding: '20px' }}>
+          <div ref={pdfContentRef} className='mb-15' style={{ color: 'black', fontSize: 'px', lineHeight: '1.8', padding: '20px' }}>
             {messages.filter(message => message.type === 'response' && message.text !== 'Jag är en chatbot som kan hjälpa dig förstå din läkar svar eller provsvar')
               .map((message, index) => (
                 <div key={index} style={{ marginBottom: '10px' }}>
@@ -185,7 +185,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         </div>
         {/* Render the canvas on the screen for debugging */}
         {canvasImage && (
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <div style={{ marginTop: '20px', textAlign: 'center', marginBottom: '20px', }}>
             <h2>Canvas Preview</h2>
             <img src={canvasImage} alt="Canvas Preview" style={{ border: '1px solid #000' }} />
           </div>
