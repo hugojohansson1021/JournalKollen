@@ -13,8 +13,16 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
     },
     sv: {
       title: 'Välkommen till Journal Kollen', 
-      description: 'Vi erbjuder en tjänst där kunder kan översätta sina läkarsvar till enklare text som förklarar vad svaret betyder',
-      descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.  ',
+      description: (
+        <span>
+          Vi erbjuder en tjänst där kunder kan <span className="underline">översätta</span> läkarsvar eller provsvar för att få en bredare uppfattning om resultatet
+        </span>
+      ),
+      descriptiontwo:(
+        <span>
+          Vi har utvecklat ett <span className="underline"> AI verktyg</span> där kunder kan ladda upp läkarsvar, provsvar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.
+        </span>
+      ),
       descriptiontre: ' Testa våran Beta version Gratis nedan  ',
     },
   };
