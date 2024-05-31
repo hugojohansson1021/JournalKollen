@@ -93,12 +93,16 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
     let position = 10;
 
     pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
+    pdf.setFontSize(10);
+    pdf.setTextColor(150);
+    pdf.text('Journalkollen.se', pdf.internal.pageSize.getWidth() - 50, 10); // Add watermark
     heightLeft -= pdfHeight;
 
     while (heightLeft >= 0) {
       position = heightLeft - imgHeight;
       pdf.addPage();
       pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
+      pdf.text('Journalkollen.se', pdf.internal.pageSize.getWidth() - 50, 10); // Add watermark to each page
       heightLeft -= pdfHeight;
     }
 
@@ -188,3 +192,4 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 };
 
 export default Chatbot;
+
