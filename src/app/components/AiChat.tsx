@@ -1,6 +1,8 @@
 import React, { FormEvent, useRef, useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ChatbotProps {
   apiEndpoint: string;
@@ -35,7 +37,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!isChecked) {
-      setError('Du måste godkänna köpvillkoren innan du kan skicka in.');
+      toast.error('Kryssa i användarvillkoren först.');
       return;
     }
 
@@ -105,6 +107,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 
   return (
     <section className="mt-10 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-[900px] shadow-2xl" style={{ borderRadius: '20px' }}>
+      <ToastContainer />
       <div className='' style={{ fontFamily: 'Arial, sans-serif', margin: 'auto', border: '2px solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor: '#000', }}>
         <div style={{ padding: '10px', backgroundColor: '#e31837', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
           <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
@@ -144,7 +147,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
           <textarea value={question} rows={3} onChange={(e) => setQuestion(e.target.value)} placeholder="Klistra in ditt läkarsvar här..." disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
-          <button type="submit" disabled={isLoading || !isChecked} style={{ padding: '5px 35px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: isLoading || !isChecked ? 0.5 : 1 }}>
+          <button type="submit" disabled={isLoading} style={{ padding: '5px 35px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
             Översätt text
           </button>
         </form>
@@ -154,18 +157,9 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           </button>
           <label className='text-black' style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', position: 'relative' }}>
             <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '5px' }} />
-            Köpvillkor
-            <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#e31837', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
-              Du måste godkänna köpvillkoren
-            </div>
-          </label>
-          <br />
-          
-          <label className='text-black' style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', position: 'relative' }}>
-            <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '5px' }} />
             Användarvillkor
             <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#e31837', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
-              Du måste godkänna användarvillkor
+              Användarvillkoren måste kryssas
             </div>
           </label>
         </div>
@@ -194,6 +188,3 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
 };
 
 export default Chatbot;
-
-
-
