@@ -120,12 +120,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
     <section className="mt-10 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-[900px] shadow-2xl" style={{ borderRadius: '20px' }}>
       <ToastContainer />
       <div className='' style={{ fontFamily: 'Arial, sans-serif', margin: 'auto', border: '2px solid #000000', borderRadius: '20px', overflow: 'hidden', borderColor: '#000', }}>
-        <div style={{ padding: '10px', backgroundColor: '#e31837', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
+        <div style={{ padding: '10px', backgroundColor: '#c12043', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
           <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
         </div>
         <div className='border-black' style={{ height: '500px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff', }}>
           {messages.map((message, index) => (
-            <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#e31837' : '#e31837', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative', opacity: '80%', }}>
+            <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#c12043' : '#c12043', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative', opacity: '80%', }}>
               {message.type === 'response' && (
                 <img src={botAvatarSrc} alt="Bot Avatar" style={{ width: '30px', height: '30px', borderRadius: '50%', marginRight: '10px' }} />
               )}
@@ -138,7 +138,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
                   right: message.type === 'question' ? '10px' : 'auto',
                   width: '10px',
                   height: '10px',
-                  backgroundColor: '#e31837',
+                  backgroundColor: '#c12043',
                   transform: message.type === 'question' ? 'rotate(45deg)' : 'rotate(-45deg)',
                 }}
               />
@@ -158,7 +158,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
           <textarea value={question} rows={3} onChange={(e) => setQuestion(e.target.value)} placeholder="Klistra in ditt läkarsvar här..." disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
-          <button type="submit" disabled={isLoading} style={{ padding: '5px 10px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#e31837', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
+          <button type="submit" disabled={isLoading} style={{ padding: '5px 10px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#c12043', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
             Översätt text
           </button>
         </form>
@@ -166,7 +166,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           <label className='text-black' style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', position: 'relative' }}>
             <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '5px' }} />
             Användarvillkor
-            <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#e31837', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
+            <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#c12043', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
               Användarvillkoren måste kryssas
             </div>
           </label>

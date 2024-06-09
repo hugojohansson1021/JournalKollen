@@ -118,10 +118,10 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             rows={5}
             required
           />
-          <button type="submit" className="bg-[#e31837] text-white py-2 px-4 rounded">
+          <button type="submit" className="bg-[#c12043] text-white py-2 px-4 rounded">
             {currentTextConfig.sendButton}
           </button>
-          <button type="button" onClick={handleEmailClick} className="bg-[#e31837] text-white py-2 px-4 rounded mb-10">
+          <button type="button" onClick={handleEmailClick} className="bg-[#c12043] text-white py-2 px-4 rounded mb-10">
             {currentTextConfig.emailButton}
           </button>
         </form>

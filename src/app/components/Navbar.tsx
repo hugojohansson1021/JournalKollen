@@ -45,7 +45,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
 
   return (
     <>
-      <nav className="fixed w-full z-50 p-2 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#e31837' }}>
+      <nav className="fixed w-full z-50 p-2 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#c12043' }}>
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
