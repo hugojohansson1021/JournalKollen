@@ -156,6 +156,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           )}
           {error && <p style={{ color: 'red', alignSelf: 'center' }}>{error}</p>}
         </div>
+        <div className='text-gray-500 bg-white cursive text-center text-sm'> Svaret kan ta några sekunder  </div>
         <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
           <textarea value={question} rows={3} onChange={(e) => setQuestion(e.target.value)} placeholder="Klistra in ditt läkarsvar här..." disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
           <button type="submit" disabled={isLoading} style={{ padding: '5px 10px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#c12043', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>

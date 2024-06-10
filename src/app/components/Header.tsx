@@ -12,15 +12,15 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       descriptiontre: ' Try our Beta version free ',
     },
     sv: {
-      title: 'Välkommen till Journal Kollen', 
+      title: 'Journalkollen läkar förklaring ', 
       description: (
         <span>
-          Vi erbjuder en tjänst där kunder kan <span className="underline">översätta läkarsvar eller provsvar</span> för att få en bredare uppfattning om resultatet
+          Journalkollen är en tjänst som översätter avancerade läkarsvar till enkel och lättförstårlig text
         </span>
       ),
       descriptiontwo:(
         <span>
-          Vi har utvecklat ett <span className="underline"> AI verktyg</span> där kunder kan ladda upp läkarsvar, provsvar eller likanande och få det översatt till svenska.
+          Med hjälp av vårat <span className="underline">AI verktyg</span> kan vi erbjuda en tjänst som sammanfattar, översätter och förklarar avancerade läkarsvar
         </span>
       ),
       descriptiontre: (
@@ -42,7 +42,7 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl ml-5 mr-5 font-bold text-[#c12043] mb-6 opacity-25 "
+              className="text-4xl ml-5 mr-5 font-bold text-[#c12043] mb-6 opacity-25 "
             >
               {isSwedish ? textConfig.sv.title : textConfig.en.title}
             </motion.h2>
@@ -51,15 +51,32 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-black mr-5 ml-5 text-lg mb-2 "
+              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans pr-24 pl-24"
             >
               {isSwedish ? textConfig.sv.description : textConfig.en.description}
-              <br />
-              <br />
+            <br />
+            </motion.h3>
+
+            <motion.h3
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans pr-24 pl-24"
+            >
               {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
               <br />
-              <br />
+            </motion.h3>
+
+            <motion.h3
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans pr-24 pl-24"
+            >
               {isSwedish ? textConfig.sv.descriptiontre : textConfig.en.descriptiontre}
+              
             </motion.h3>
           
           
