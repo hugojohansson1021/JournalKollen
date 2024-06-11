@@ -146,7 +146,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           ))}
           <div ref={bottomRef} />
           {isLoading && (
-            <div style={{ display: 'flex', justifyContent: 'flex-start', height: '100px',  }}>
+            <div style={{ display: 'flex', justifyContent: 'center', height: '100px',  }}>
               <div className="dot-typing">
                 <div></div>
                 <div></div>
