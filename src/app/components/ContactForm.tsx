@@ -79,7 +79,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-black mb-4 mt-12 "
+            className="text-4xl font-bold text-[#c12043] mb-4 mt-12 "
           >
             {currentTextConfig.title}
           </motion.h2>
