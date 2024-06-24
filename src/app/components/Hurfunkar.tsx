@@ -9,9 +9,9 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       description: 'Below you can see step by step how you as a customer can use our service to translate "Doctor" into Swedish',
       descriptiontwo: 'We have developed an AI tool where customers can upload medical answers, test answers or similar and have it translated into Swedish. With a better explanation with more understanding.',
       steps: [
-        { title: 'Step 1', description: 'Upload your medical documents.', icon: '/PDF-icon.png' },
+        { title: 'Step 1', description: 'Upload your medical documents.', icon: '/Chat-icon.png' },
         { title: 'Step 2', description: 'Pay with Swish to reccive the Ai genereted translaition', icon: '/Swish-icon.png' },
-        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: '/Chat-icon.png' },
+        { title: 'Step 3', description: 'Receive a detailed and understandable explanation.', icon: '/PDF-icon.png' },
       ],
     },
     sv: {
@@ -19,9 +19,9 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       description: 'Nedan kan du se steg för steg hur du som kund kan använda våran tjänst för att översätta "Läkare" till svenska',
       descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.',
       steps: [
-        { title: 'Steg 1', description: 'Ladda upp ditt medicinska dokument eller kopiera texten du vill ha förklarad.', icon: '/PDF-icon.png' },
+        { title: 'Steg 1', description: 'Ladda upp ditt medicinska dokument eller kopiera texten du vill ha förklarad.', icon: '/Chat-icon.png' },
         { title: 'Steg 2', description: 'Tryck på svara knappen och betala med swish', icon: '/Swish-icon.png' },
-        { title: 'Steg 3', description: 'Efter du betalt med swish navigera till Journalkollen.se och invänta ditt generarade svar ', icon: '/Chat-icon.png' },
+        { title: 'Steg 3', description: 'Efter du betalt med swish navigera till Journalkollen.se och invänta ditt generarade svar ', icon: '/PDF-icon.png' },
       ],
     },
   };

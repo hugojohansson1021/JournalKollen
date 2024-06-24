@@ -184,7 +184,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
       border: '1px solid #000000', 
       borderRadius: '10px', 
       fontSize: '12px', 
-      minHeight: '100px'
+      minHeight: '170px'
     }} 
   />
   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -194,9 +194,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         <a style={{ color: 'black', textDecoration: 'underline', marginRight: '5px' }}>Användarvillkor</a>
       </Link>
       <span style={{ cursor: 'pointer' }} title="More information">ℹ️</span>
-      <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#c12043', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
-        Användarvillkoren måste kryssas
-      </div>
+      
     </label>
     <button 
       type="submit" 
