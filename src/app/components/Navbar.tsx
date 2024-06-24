@@ -51,7 +51,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
-          <Link href="https://www.journalkollen.se/" className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white py-2 px-4 rounded-full">
+          <Link href="https://www.journalkollen.se/" className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white rounded-full ml-10">
   {/* Replace text with Image component */}
   <Image
     src="/FrameLogo.png"

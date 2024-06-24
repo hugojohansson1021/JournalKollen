@@ -75,46 +75,51 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
   const generateCanvasAndDownloadPdf = async () => {
     const pdfContent = pdfContentRef.current;
     if (!pdfContent) return;
-
+  
     console.log('PDF content:', pdfContent.innerHTML); // Log content for debugging
-
-    // Set a fixed width for the PDF content to ensure consistent text size
-    const originalWidth = pdfContent.style.width;
-    pdfContent.style.width = '800px';
-
-    const scale = 2; // Use a higher scale factor for better resolution
-    const canvas = await html2canvas(pdfContent, { backgroundColor: '#ffffff', scale: scale });
-    const imgData = canvas.toDataURL('image/png');
-    setCanvasImage(imgData); // Set the canvas image to render it on the screen for debugging
-
+  
     const pdf = new jsPDF('p', 'mm', 'a4');
-    const pdfWidth = pdf.internal.pageSize.getWidth() - 20; // Adding margin
-    const pdfHeight = pdf.internal.pageSize.getHeight() - 20; // Adding margin
-    let imgProps = pdf.getImageProperties(imgData);
-    let imgHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-    let heightLeft = imgHeight;
-    let position = 10;
-
-    pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
-    pdf.setFontSize(10);
-    pdf.setTextColor(150);
-    pdf.text('Journalkollen.se', pdf.internal.pageSize.getWidth() - 50, 10); // Add watermark
-    heightLeft -= pdfHeight;
-
-    while (heightLeft >= 0) {
-      position = heightLeft - imgHeight;
+    const margin = 10;
+    const pdfWidth = pdf.internal.pageSize.getWidth() - margin * 2; // Adding margin
+    const pdfHeight = pdf.internal.pageSize.getHeight() - margin * 2; // Adding margin
+    const textSize = 12; // Set a text size that is readable on smaller screens
+    const lineHeight = textSize * 1.05; // Line height for text, very close to text size
+  
+    pdf.setFontSize(textSize);
+  
+    const content = pdfContent.innerText; // Get the text content from the pdfContent div
+    const textLines: string[] = pdf.splitTextToSize(content, pdfWidth); // Split the text content to fit within the page width
+    let y = margin + textSize; // Start y position with a margin
+  
+    const watermarkImage = 'LogoWater.png'; // Replace with your watermark image path
+  
+    const addWatermark = (pdf: jsPDF, x: number, y: number) => {
+      pdf.addImage(watermarkImage, 'PNG', x, y, 60, 30); // Adjust the size and position as needed
+    };
+  
+    const addPageWithWatermark = (pdf: jsPDF) => {
       pdf.addPage();
-      pdf.addImage(imgData, 'PNG', 10, position, pdfWidth, imgHeight);
-      pdf.text('Journalkollen.se', pdf.internal.pageSize.getWidth() - 50, 10); // Add watermark to each page
-      heightLeft -= pdfHeight;
-    }
-
-    pdf.save('AI_Response.pdf');
-
-    // Reset the width of the PDF content
-    pdfContent.style.width = originalWidth;
+      addWatermark(pdf, pdf.internal.pageSize.getWidth() - 70, 10); // Add watermark to new page
+    };
+  
+    // Add watermark to the first page
+    addWatermark(pdf, pdf.internal.pageSize.getWidth() - 70, 10);
+  
+    textLines.forEach((line: string) => {
+      if (y + lineHeight > pdfHeight) { // Add a new page if the text exceeds the page height
+        addPageWithWatermark(pdf);
+        y = margin + textSize; // Reset y position for new page
+      }
+      pdf.text(line, margin, y);
+      y += lineHeight;
+    });
+  
+    pdf.save('Jounalkollen_AI_Svar.pdf');
   };
+  
+  
+  
+  
 
   return (
     <section className="mt-10 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-[900px] shadow-2xl" style={{ borderRadius: '20px' }}>
@@ -184,18 +189,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
               ))}
           </div>
         </div>
-        {/* Render the canvas on the screen for debugging */}
-        {canvasImage && (
-          <div style={{ marginTop: '20px', textAlign: 'center', marginBottom: '20px', }}>
-            <h2>Canvas Preview</h2>
-            <img src={canvasImage} alt="Canvas Preview" style={{ border: '1px solid #000' }} />
-          </div>
-        )}
+        
       </div>
     </section>
   );
 };
 
 export default Chatbot;
-
-
