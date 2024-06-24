@@ -1,7 +1,9 @@
 // Navbar.tsx
+
 'use client';
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Import Image component from next/image
 import { motion, AnimatePresence } from 'framer-motion';
 /* eslint-disable react/no-unescaped-entities */
 
@@ -50,13 +52,14 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
             <Link href="/" className="text-3xl font-bold text-center z-10 text-white py-2 px-4 rounded-full ">
-              Journal Kollen
+              {/* Replace text with Image component */}
+              <Image src="/FrameLogo.png" alt="Journal Kollen Logo" width={190} height={90} />
             </Link>
 
-            {/* Uppdaterad klickbar område för hamburgerikon */}
+            {/* Updated clickable area for hamburger icon */}
             <div className={`md:hidden flex ${isMenuOpen ? 'is-active' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className=" m-0">
-                {/* Hamburgerikon med tre streck (bars) */}
+                {/* Hamburger icon with three bars */}
                 <span className="navbar_toggle bg-black bar "></span>
                 <span className="navbar_toggle bg-black bar"></span>
                 <span className="navbar_toggle bg-black bar"></span>
@@ -64,7 +67,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
             </div>
           </div>
 
-          {/* Menylänkar */}
+          {/* Menu links */}
           <div className={`absolute md:relative top-full left-0 right-0 md:top-auto mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'} flex-col items-center md:flex md:flex-row`}>
             <div className="absolute top-0 mr-5 ml-5 w-full h-full bg-gray-700 bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
             <ul className="relative w-full text-center md:flex md:flex-row md:space-x-4 ">
