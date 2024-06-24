@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 
 interface ChatbotProps {
   apiEndpoint: string;
@@ -162,20 +163,64 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           {error && <p style={{ color: 'red', alignSelf: 'center' }}>{error}</p>}
         </div>
         <div className='text-gray-500 bg-white cursive text-center text-sm'> Svaret kan ta några sekunder  </div>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', borderTop: '1px solid #000', padding: '10px', backgroundColor: '#f5f5f5', color: '#666' }}>
-          <textarea value={question} rows={3} onChange={(e) => setQuestion(e.target.value)} placeholder="Klistra in ditt läkarsvar här..." disabled={isLoading} style={{ flexGrow: 1, padding: '10px', marginRight: '10px', border: '1px solid #000000', borderRadius: '10px', fontSize: '16px' }} />
-          <button type="submit" disabled={isLoading} style={{ padding: '5px 10px', fontSize: '16px', cursor: 'pointer', border: 'none', backgroundColor: '#c12043', color: 'white', borderRadius: '10px', opacity: isLoading ? 0.5 : 1 }}>
-            Översätt text
-          </button>
-        </form>
+        <form onSubmit={handleSubmit} style={{
+  display: 'flex', 
+  flexDirection: 'column', 
+  borderTop: '1px solid #000', 
+  padding: '10px', 
+  backgroundColor: '#f5f5f5', 
+  color: '#666', 
+  gap: '10px'
+}}>
+  <textarea 
+    value={question} 
+    rows={3} 
+    onChange={(e) => setQuestion(e.target.value)} 
+    placeholder="Klistra in ditt läkarsvar här..." 
+    disabled={isLoading} 
+    style={{
+      flexGrow: 1, 
+      padding: '10px', 
+      border: '1px solid #000000', 
+      borderRadius: '10px', 
+      fontSize: '12px', 
+      minHeight: '100px'
+    }} 
+  />
+  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <label className='text-black' style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+      <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '10px', width: '30px', height: '30px' }} />
+      <Link href="/terms-and-conditions" legacyBehavior>
+        <a style={{ color: 'black', textDecoration: 'underline', marginRight: '5px' }}>Användarvillkor</a>
+      </Link>
+      <span style={{ cursor: 'pointer' }} title="More information">ℹ️</span>
+      <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#c12043', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
+        Användarvillkoren måste kryssas
+      </div>
+    </label>
+    <button 
+      type="submit" 
+      disabled={isLoading} 
+      style={{
+        padding: '14px', 
+        fontSize: '16px', 
+        cursor: 'pointer', 
+        border: 'none', 
+        backgroundColor: '#c12043', 
+        color: 'white', 
+        borderRadius: '10px', 
+        opacity: isLoading ? 0.5 : 1
+      }}
+    >
+      Översätt text
+    </button>
+  </div>
+  
+</form>
+
+
         <div style={{ padding: '10px', backgroundColor: '#f5f5f5', borderTop: '1px solid #ddd', textAlign: 'center' }}>
-          <label className='text-black' style={{ marginLeft: '10px', display: 'flex', alignItems: 'center', position: 'relative' }}>
-            <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '5px' }} />
-            Användarvillkor
-            <div style={{ visibility: isChecked ? 'visible' : 'hidden', position: 'absolute', top: '-30px', left: '0', backgroundColor: '#c12043', color: 'white', padding: '5px', borderRadius: '5px', fontSize: '12px', whiteSpace: 'nowrap' }}>
-              Användarvillkoren måste kryssas
-            </div>
-          </label>
+        
         </div>
         
         {/* Hidden div for PDF content */}
