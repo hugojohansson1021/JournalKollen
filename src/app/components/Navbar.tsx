@@ -51,10 +51,16 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
           {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
-            <Link href="/" className="text-3xl font-bold text-center z-10 text-white py-2 px-4 rounded-full ">
-              {/* Replace text with Image component */}
-              <Image src="/FrameLogo.png" alt="Journal Kollen Logo" width={190} height={90} />
-            </Link>
+          <Link href="https://www.journalkollen.se/" className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white py-2 px-4 rounded-full">
+  {/* Replace text with Image component */}
+  <Image
+    src="/FrameLogo.png"
+    alt="Journal Kollen Logo"
+    width={230}
+    height={90}
+    className="sm:w-auto"
+  />
+         </Link>
 
             {/* Updated clickable area for hamburger icon */}
             <div className={`md:hidden flex ${isMenuOpen ? 'is-active' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
