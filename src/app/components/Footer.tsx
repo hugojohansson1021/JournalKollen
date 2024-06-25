@@ -37,7 +37,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
         title: 'Juridiskt',
         links: [
           { href: '/leverans-vilkor', text: 'Leveransvillkor' },
-          { href: '/anvandar-vilkor', text: 'Användarvillkor' },
+          { href: '/Vilkor', text: 'Användarvillkor' },
         ],
       },
       allRightsReserved: 'Alla rättigheter förbehållna.',

@@ -193,7 +193,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <label className='text-black' style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
               <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '10px', width: '30px', height: '30px' }} />
-              <Link href="/terms-and-conditions" legacyBehavior>
+              <Link href="/Vilkor" legacyBehavior>
                 <a style={{ color: 'black', textDecoration: 'underline', marginRight: '5px' }}>Användarvillkor</a>
               </Link>
               <span style={{ cursor: 'pointer' }} title="More information">ℹ️</span>
