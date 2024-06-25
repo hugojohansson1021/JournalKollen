@@ -15,12 +15,12 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       title: 'Journalkollen läkar förklaring ', 
       description: (
         <span>
-          Journalkollen är en tjänst som översätter avancerade läkarsvar till enkel och lättförstårlig text
+          Journalkollen förenklar medicinska svar genom att översätta avancerade läkarutlåtanden till lättförståelig text. Vår tjänst hjälper dig att snabbt och enkelt förstå komplex medicinsk information, utan att du behöver någon medicinsk bakgrund.
         </span>
       ),
       descriptiontwo:(
         <span>
-          Med hjälp av vårat <span className="underline">AI verktyg</span> kan vi erbjuda en tjänst som sammanfattar, översätter och förklarar avancerade läkarsvar
+          Med vårt AI-verktyg kan vi sammanfatta, översätta och förklara detaljerade läkarutlåtanden. Testa vår betaversion gratis nedan och upplev hur Journalkollen kan göra medicinska svar mer tillgängliga för dig.<span className="underline"></span>
         </span>
       ),
       descriptiontre: (
@@ -37,7 +37,7 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       <div className="max-w-7xl mx-auto">
         
           <div className="flex flex-col justify-center text-center">
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -45,7 +45,7 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
               className="text-4xl ml-5 mr-5 font-bold text-[#c12043] mb-6 opacity-25 "
             >
               {isSwedish ? textConfig.sv.title : textConfig.en.title}
-            </motion.h2>
+            </motion.h1>
             <motion.h3
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -58,28 +58,9 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
             <br />
             </motion.h3>
 
-            <motion.h3
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans lg:pr-24 lg:pl-24"
-            >
-              {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
-              <br />
-              <br />
-            </motion.h3>
+            
 
-            <motion.h3
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans "
-            >
-              {isSwedish ? textConfig.sv.descriptiontre : textConfig.en.descriptiontre}
-              
-            </motion.h3>
+            
           
           
            

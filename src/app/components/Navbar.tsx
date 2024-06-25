@@ -75,7 +75,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
 
           {/* Menu links */}
           <div className={`absolute md:relative top-full left-0 right-0 md:top-auto mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'} flex-col items-center md:flex md:flex-row`}>
-            <div className="absolute top-0 mr-5 ml-5 w-full h-full bg-gray-700 bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
+            <div className="absolute top-0 mr-5 ml-5 w-full h-full bg-[#d1566b] bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
             <ul className="relative w-full text-center md:flex md:flex-row md:space-x-4 ">
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();

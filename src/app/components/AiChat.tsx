@@ -16,10 +16,10 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förklaring AI', botAvatarSrc = '/Doctor.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen AI', botAvatarSrc = '/Doctor.png' }) => {
   const [question, setQuestion] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'response', text: 'Jag är en chatbot som kan hjälpa dig förstå din läkar svar eller provsvar' },
+    { type: 'response', text: 'Jag är en chatbot som kan hjälpa dig förstå dina läkarsvar eller provsvar' },
   ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
@@ -132,7 +132,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         <div style={{ padding: '10px', backgroundColor: '#c12043', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
           <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
         </div>
-        <div ref={chatContainerRef} className='border-black' style={{ height: '500px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff', }}>
+        <div ref={chatContainerRef} className='border-black' style={{ height: '400px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff', }}>
           {messages.map((message, index) => (
             <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#c12043' : '#c12043', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative', opacity: '80%', }}>
               {message.type === 'response' && (
@@ -187,7 +187,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
               border: '1px solid #000000', 
               borderRadius: '10px', 
               fontSize: '12px', 
-              minHeight: '170px'
+              minHeight: '130px'
             }} 
           />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
