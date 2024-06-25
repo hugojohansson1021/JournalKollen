@@ -27,6 +27,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
   const [canvasImage, setCanvasImage] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState<boolean>(false); // State for the checkbox
   const bottomRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const pdfContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,6 +35,12 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
       generateCanvasAndDownloadPdf();
     }
   }, [hasResponse]);
+
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -118,10 +125,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
     pdf.save('Jounalkollen_AI_Svar.pdf');
   };
   
-  
-  
-  
-
   return (
     <section className="mt-10 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-[900px] shadow-2xl" style={{ borderRadius: '20px' }}>
       <ToastContainer />
@@ -129,7 +132,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         <div style={{ padding: '10px', backgroundColor: '#c12043', borderBottom: '1px solid #ddd', textAlign: 'center' }}>
           <h1 style={{ alignSelf: 'center', color: 'White' }}>{botName}</h1>
         </div>
-        <div className='border-black' style={{ height: '500px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff', }}>
+        <div ref={chatContainerRef} className='border-black' style={{ height: '500px', overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px', backgroundColor: '#fff', }}>
           {messages.map((message, index) => (
             <div key={index} style={{ alignSelf: message.type === 'question' ? 'flex-end' : 'flex-start', backgroundColor: message.type === 'question' ? '#c12043' : '#c12043', borderRadius: '10px', padding: '10px', maxWidth: '80%', display: 'flex', alignItems: 'center', position: 'relative', opacity: '80%', }}>
               {message.type === 'response' && (
@@ -164,63 +167,57 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
         </div>
         <div className='text-gray-500 bg-white cursive text-center text-sm'> Svaret kan ta några sekunder  </div>
         <form onSubmit={handleSubmit} style={{
-  display: 'flex', 
-  flexDirection: 'column', 
-  borderTop: '1px solid #000', 
-  padding: '10px', 
-  backgroundColor: '#f5f5f5', 
-  color: '#666', 
-  gap: '10px'
-}}>
-  <textarea 
-    value={question} 
-    rows={3} 
-    onChange={(e) => setQuestion(e.target.value)} 
-    placeholder="Klistra in ditt läkarsvar här..." 
-    disabled={isLoading} 
-    style={{
-      flexGrow: 1, 
-      padding: '10px', 
-      border: '1px solid #000000', 
-      borderRadius: '10px', 
-      fontSize: '12px', 
-      minHeight: '170px'
-    }} 
-  />
-  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-    <label className='text-black' style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
-      <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '10px', width: '30px', height: '30px' }} />
-      <Link href="/terms-and-conditions" legacyBehavior>
-        <a style={{ color: 'black', textDecoration: 'underline', marginRight: '5px' }}>Användarvillkor</a>
-      </Link>
-      <span style={{ cursor: 'pointer' }} title="More information">ℹ️</span>
-      
-    </label>
-    <button 
-      type="submit" 
-      disabled={isLoading} 
-      style={{
-        padding: '14px', 
-        fontSize: '16px', 
-        cursor: 'pointer', 
-        border: 'none', 
-        backgroundColor: '#c12043', 
-        color: 'white', 
-        borderRadius: '10px', 
-        opacity: isLoading ? 0.5 : 1
-      }}
-    >
-      Översätt text
-    </button>
-  </div>
-  
-</form>
-
-
+          display: 'flex', 
+          flexDirection: 'column', 
+          borderTop: '1px solid #000', 
+          padding: '10px', 
+          backgroundColor: '#f5f5f5', 
+          color: '#666', 
+          gap: '10px'
+        }}>
+          <textarea 
+            value={question} 
+            rows={3} 
+            onChange={(e) => setQuestion(e.target.value)} 
+            placeholder="Klistra in ditt läkarsvar här..." 
+            disabled={isLoading} 
+            style={{
+              flexGrow: 1, 
+              padding: '10px', 
+              border: '1px solid #000000', 
+              borderRadius: '10px', 
+              fontSize: '12px', 
+              minHeight: '170px'
+            }} 
+          />
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <label className='text-black' style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+              <input type="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} style={{ marginRight: '10px', width: '30px', height: '30px' }} />
+              <Link href="/terms-and-conditions" legacyBehavior>
+                <a style={{ color: 'black', textDecoration: 'underline', marginRight: '5px' }}>Användarvillkor</a>
+              </Link>
+              <span style={{ cursor: 'pointer' }} title="More information">ℹ️</span>
+            </label>
+            <button 
+              type="submit" 
+              disabled={isLoading} 
+              style={{
+                padding: '14px', 
+                fontSize: '16px', 
+                cursor: 'pointer', 
+                border: 'none', 
+                backgroundColor: '#c12043', 
+                color: 'white', 
+                borderRadius: '10px', 
+                opacity: isLoading ? 0.5 : 1
+              }}
+            >
+              Översätt text
+            </button>
+          </div>
+        </form>
         <div style={{ padding: '10px', backgroundColor: '#f5f5f5', borderTop: '1px solid #ddd', textAlign: 'center' }}>
-        
         </div>
-        
         {/* Hidden div for PDF content */}
         <div style={{ position: 'absolute', top: '-9999px', left: '0', width: '100%', height: 'auto', overflow: 'hidden', opacity: 0 }}>
           <div ref={pdfContentRef} className='mb-15' style={{ color: 'black', fontSize: 'px', lineHeight: '1.8', padding: '20px' }}>
@@ -232,7 +229,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journal Förk
               ))}
           </div>
         </div>
-        
       </div>
     </section>
   );
