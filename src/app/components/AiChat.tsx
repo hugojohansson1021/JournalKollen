@@ -99,7 +99,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
     const textLines: string[] = pdf.splitTextToSize(content, pdfWidth); // Split the text content to fit within the page width
     let y = margin + textSize; // Start y position with a margin
   
-    const watermarkImage = 'LogoWater.png'; // Replace with your watermark image path
+    const watermarkImage = 'LogoGray.png'; // Replace with your watermark image path
   
     const addWatermark = (pdf: jsPDF, x: number, y: number) => {
       pdf.addImage(watermarkImage, 'PNG', x, y, 60, 30); // Adjust the size and position as needed

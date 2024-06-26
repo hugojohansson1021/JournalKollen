@@ -12,10 +12,10 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
       descriptiontre: ' Try our Beta version free ',
     },
     sv: {
-      title: 'Journalkollen läkar förklaring ', 
+      title: 'Journalkollen Diagnosförklaring ', 
       description: (
         <span>
-          Journalkollen förenklar medicinska svar genom att översätta avancerade läkarutlåtanden till lättförståelig text. Vår tjänst hjälper dig att snabbt och enkelt förstå komplex medicinsk information, utan att du behöver någon medicinsk bakgrund.
+          Journalkollen förenklar läkarsvar svar genom att översätta avancerade läkarutlåtanden till lättförståelig text. Vår tjänst hjälper dig att snabbt och enkelt förstå komplex medicinsk information, utan att du behöver någon medicinsk bakgrund.
         </span>
       ),
       descriptiontwo:(

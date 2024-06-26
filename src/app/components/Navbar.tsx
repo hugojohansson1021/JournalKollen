@@ -54,7 +54,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
           <Link href="https://www.journalkollen.se/" className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white rounded-full ml-10">
   {/* Replace text with Image component */}
   <Image
-    src="/FrameLogo.png"
+    src="/Logo.png"
     alt="Journal Kollen Logo"
     width={230}
     height={90}
