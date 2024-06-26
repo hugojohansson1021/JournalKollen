@@ -18,8 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #faeef0
+  background: #faeef0;
+  font-family: 'Lato', sans-serif !important;
 }
+
+
 
 @layer utilities {
   .text-balance {

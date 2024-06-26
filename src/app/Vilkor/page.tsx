@@ -9,6 +9,7 @@ import Vilkor from "../components/Vilkor";
 
 
 
+
 export default function Home() {
   const [isSwedish, setIsSwedish] = useState(true);
   return (

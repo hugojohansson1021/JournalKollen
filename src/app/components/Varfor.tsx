@@ -16,12 +16,12 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
     },
     sv: {
       title: 'Varför Journal Kollen?',
-      description: 'Vi vet att vänta på provsvar från 1177 eller läkare kan vara stressamt, när provresultaten sedan väl mottages så kan det vara svårt att förstå svaret, denna tjänst låter en AI översätta siffror och akronymer till förstålig text för gemene person, nedan finns några anledningar att använda våran tjänst för att hjälpa dig',
+      description: 'Att vänta på provsvar från 1177 eller läkare kan vara både stressande och frustrerande. När svaren väl kommer kan de medicinska termerna och siffrorna vara svåra att förstå. Vår AI-tjänst översätter dessa komplexa provsvar till enkel och begriplig text, så att du snabbt och enkelt kan förstå ditt provsvar.',
       points: [
-        { title: 'Akronym översättning', description: 'Ett provsvar kan ibland bestå av mestadels akronymer och förkortningar, detta är något gemene person måste leta upp på egen hand men med våran tjänst så förklaras vad varje akronym ocg förkottning innefattar och betyder.  ' },
-        { title: 'Avancerad retorik', description: 'Precis som jurister, har läkare ett eget språk med avancerad retorik för att kunna bedriva tydliga svar, detta är ett språk som kan avra svårt att förstå, våran tjänst hjälper till att förklara vad som menas.' },
-        { title: 'Förklaring', description: 'Om en kund laddar upp en lista på provsvar med context vad provet handlar om kommer våran tjänst hjäpa till att ge en helhets förklaring på vad som ligger inom referensvärden och vad respektive betyder. ' },
-        { title: 'Säkerhet', description: 'Våran tjänst sammlar ingen data, sparar ingen data eller ser ingen data, eftersom kunder kommer ladda upp test resultat och annan känslig information har vi skapat ett system där vi kan inte se vad kunderna frågar eller få för svar av AI:n.' },
+        { title: 'Akronymöversättning', description: 'Provsvar är ofta fyllda med akronymer och förkortningar som kan vara svåra att förstå för gemene man. Med vår tjänst behöver du inte längre leta upp betydelser själv. Vi förklarar tydligt vad varje akronym och förkortning innebär, så att du enkelt kan förstå dina provresultat.' },
+        { title: 'Avancerad retorik', description: 'Precis som jurister har läkare ett eget språk fyllt med avancerad retorik för att ge tydliga svar. Detta språk kan vara svårt att förstå för de flesta. Vår tjänst hjälper till att översätta och förklara vad som egentligen menas, så att du kan känna dig trygg med dina provresultat.' },
+        { title: 'Förklaring', description: 'Om en kund laddar upp ett provsvar, kommer vår tjänst att ge en helhetsförklaring. Vi hjälper dig att förstå vilka värden som ligger inom referensvärden och vad varje resultat betyder.' },
+        { title: 'Säkerhet', description: 'Vår tjänst samlar inte in, sparar inte och har ingen åtkomst till någon data. Eftersom kunder laddar upp testresultat och annan känslig information, har vi skapat ett system där vi inte kan se vad kunderna frågar eller vilka svar de får från AI, Din integritet är vår högsta prioritet.' },
       ],
     },
   };

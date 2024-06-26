@@ -51,7 +51,7 @@ const headercontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispat
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-gray-700 mr-5 ml-5 text-lg mb-2 font-sans lg:pr-24 lg:pl-24"
+              className="text-gray-700 mr-5 ml-5 text-lg mb-2 lg:pr-24 lg:pl-24"
             >
               {isSwedish ? textConfig.sv.description : textConfig.en.description}
             <br />

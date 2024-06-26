@@ -8,6 +8,7 @@ import Securepage from "./components/Varfor";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import Chatbot from "./components/AiChat";
+import Faq from "./components/Faq";
 
 
 export default function Home() {
@@ -27,6 +28,8 @@ export default function Home() {
      <Hurfunkar isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
      <Securepage isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
+
+     <Faq isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
      <ContactForm isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
 
