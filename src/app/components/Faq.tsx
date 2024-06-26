@@ -63,7 +63,7 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
           <div className="flex justify-center">
             <div className="space-y-4">
               {currentTextConfig.questions.map((item, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+                <div key={index} className="bg-[#faeef0] p-4 rounded-lg shadow-md">
                   <button
                     onClick={() => handleToggle(index)}
                     className="flex justify-between items-center w-64 md:w-96 text-left"

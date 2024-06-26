@@ -19,9 +19,9 @@ const Hurfunkardetcontainer: React.FC<{ isSwedish: boolean; setIsSwedish: React.
       description: 'Nedan kan du se steg för steg hur du som kund kan använda våran tjänst för att översätta "Läkare" till svenska',
       descriptiontwo: 'Vi har utvecklat ett AI verktyg där kunder kan ladda upp läkar svar, prov svar eller likanande och få det översatt till svenska. Med en bättre förklaring med mer förståelse.',
       steps: [
-        { title: 'Steg 1', description: 'Ladda upp ditt medicinska dokument eller kopiera texten du vill ha förklarad.', icon: '/Chat-icon.png' },
-        { title: 'Steg 2', description: 'Tryck på svara knappen och betala med swish', icon: '/Swish-icon.png' },
-        { title: 'Steg 3', description: 'Efter du betalt med swish navigera till Journalkollen.se och invänta ditt generarade svar ', icon: '/PDF-icon.png' },
+        { title: 'Steg 1', description: 'Klistra in ditt läkarsvar eller provsvar i AI chatten', icon: '/Chat-icon.png' },
+        { title: 'Steg 2', description: 'Tryck på "Översätt text" knappen och betala med Swish (39kr)', icon: '/Swish-icon.png' },
+        { title: 'Steg 3', description: 'Efter du betalat med Swish, navigera tillbaka till Journalkollen.se och invänta ditt svar och PDF ', icon: '/PDF-icon.png' },
       ],
     },
   };
