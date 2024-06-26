@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+
 const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish }) => {
   const textConfig = {
     en: {
@@ -68,6 +69,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
           ))}
         </div>
       </div>
+      
     </section>
   );
 };
