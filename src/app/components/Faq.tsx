@@ -25,13 +25,41 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
     sv: {
       questions: [
         {
-          question: 'Vad är Next.js?',
-          answer: 'Next.js är ett React-ramverk för produktion som gör det enkelt att bygga snabba och användarvänliga webbapplikationer.',
+          question: 'Vad är Journalkollen.se',
+          answer: 'Journalkollen.se är en internettjänst som erbjuder översättning av avancerade medicinska texter genom att använda en AI-modell. Denna AI-modell översätter medicinska termer och akronymer till begriplig text.',
         },
         {
-          question: 'Vad är TypeScript?',
-          answer: 'TypeScript är ett starkt typat programmeringsspråk som bygger på JavaScript och ger dig bättre verktyg i alla skala.',
+          question: 'Hur funkar tjänsten?',
+          answer: 'Så här fungerar tjänsten: Först klistrar du in ditt läkarsvar i chatten här. Sedan trycker du på "Översätt text"-knappen. Därefter betalar du 39 kr med Swish. När betalningen är klar navigerar du tillbaka till journalkollen.se, där ditt svar kommer att finnas i chatten, och du får även en kopia i PDF-format.',
         },
+        {
+            question: 'Hur ser ett översatt provsvar ut?',
+            answer: 'AI:n kommer att dela upp ditt provsvar i stycken och översätta stycke för stycka, för att se en video exempel se HÄR ',
+          },
+        {
+            question: 'Kostar denna tjänst?',
+            answer: 'Ja, 39 kr. För att kunna erbjuda denna tjänst till så många som möjligt måste vi ta betalt för att kunna underhålla servrar, webbhotell, AI-modell och utvecklingskostnader.',
+          },
+          {
+            question: 'Vilka kan använda tjänsten?',
+            answer: 'Alla kan använda tjänsten, men det är viktigt att veta att om du har ett provsvar som är för stort (t.ex. 20 sidor) kommer AI-chatten att avvisa det, eftersom det blir för mycket text att översätta.',
+          },
+          {
+            question: 'Vilka provsvar är vanligast att översätta?',
+            answer: 'De vanligaste proverna som översätts är Biomarkörprov, blodprov och tumörmarkörer som: PSA (Prostataspecifikt antigen), CEA (Carcinoembryonic antigen), CA 19-9 (Cancerantigen 19-9), CA 125 (Cancerantigen 125), AFP (Alfafetoprotein), hCG (Humant koriongonadotropin), HER2 (Human epidermal tillväxtfaktorreceptor 2).',
+          },
+          {
+            question: 'Hur får jag min översättning?',
+            answer: 'Det översatta provsvaret kommer du att få på två sätt: först kommer svaret i chatten, men du får även en kopia automatiskt nedladdad till din enhet.',
+          },
+          {
+            question: 'Kan jag lita på en AI?',
+            answer: 'Ja, vår AI-chat använder sig av ett strikt svarprotokoll. Detta betyder att AI inte kommer att anta eller gissa något. Informationen som AI använder sig av kommer från strikt pålitliga medicinska publikationer.',
+          },
+          {
+            question: 'Kommer jag få läkarrekomendationer?',
+            answer: 'Nej, endast legitimerade läkare får ge medicinska utlåtanden och rekommendationer. Vår AI följer lagen. Vår tjänst översätter och förklarar medicinska termer. Vi rekommenderar ALLTID att alla som använder vår tjänst kontaktar sin läkare angående sina provsvar.',
+          },
       ],
     },
   };
@@ -45,8 +73,8 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
   };
 
   return (
-    <div className="w-full bg-white">
-      <section className="py-12 px-4 sm:px-6 lg:px-8 mt-12">
+    <div id='Faq' className="w-full bg-white">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col justify-center text-center mb-8">
             <motion.h2
