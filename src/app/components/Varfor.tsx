@@ -13,6 +13,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
         { title: 'Advanced rhetoric', description: 'Just like lawyers, doctors have their own language with advanced rhetoric to be able to provide clear answers, this is a language that can be difficult to understand, our service helps to explain what is meant.' },
         { title: 'Explanation', description: 'If a customer uploads a list of test answers with context of what the test is about, our service will help to provide a comprehensive explanation of what is within the reference values ​​and what each means.' },
         { title: 'Security', description: 'Our service does not collect any data, save any data or see any data, because customers will upload test results and other sensitive information, we have created a system where we cannot see what the customers ask or get answers from the AI.' },
+        { title: 'Less Stress', description: 'We understand that the time between receiving your test results and contacting your doctor can be very stressful, especially when you dont understand your results. We offer an AI service that translates the complex test results so you dontt have to Google each acronym.' },
       ],
     },
     sv: {
@@ -23,6 +24,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
         { title: 'Avancerad retorik', description: 'Precis som jurister har läkare ett eget språk fyllt med avancerad retorik för att ge tydliga svar. Detta språk kan vara svårt att förstå för de flesta. Vår tjänst hjälper till att översätta och förklara vad som egentligen menas, så att du kan känna dig trygg med dina provresultat.' },
         { title: 'Förklaring', description: 'Om en kund laddar upp ett provsvar, kommer vår tjänst att ge en helhetsförklaring. Vi hjälper dig att förstå vilka värden som ligger inom referensvärden och vad varje resultat betyder.' },
         { title: 'Säkerhet', description: 'Vår tjänst samlar inte in, sparar inte och har ingen åtkomst till någon data. Eftersom kunder laddar upp testresultat och annan känslig information, har vi skapat ett system där vi inte kan se vad kunderna frågar eller vilka svar de får från AI, Din integritet är vår högsta prioritet.' },
+        { title: 'Mindre stress', description: 'Vi förstår att tiden mellan att en patient får sitt provsvar och kontakt med läkaren kan vara mycket stressande, särskilt när du inte förstår ditt provsvar. Vi erbjuder en AI-tjänst som översätter det svårförståeliga provsvaret så att du slipper googla varje akronym.' },
       ],
     },
   };
