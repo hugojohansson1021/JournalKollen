@@ -8,7 +8,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
       navigation: {
         title: 'Navigation',
         links: [
-          { href: '/', text: 'Home' },
+          { href: '/#', text: 'Home' },
           { href: '/hur-funkar-det', text: 'How it works' },
           { href: '/varfor', text: 'Why' },
           { href: '/kontakta', text: 'Contact' },
@@ -17,7 +17,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
       legal: {
         title: 'Legal',
         links: [
-          { href: '/leverans-vilkor', text: 'Delivery Terms' },
+          
           { href: '/anvandar-vilkor', text: 'User Terms' },
         ],
       },
@@ -28,15 +28,15 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
         title: 'Navigation',
         links: [
           { href: '/', text: 'Startsida' },
-          { href: '/hur-funkar-det', text: 'Hur funkar det?' },
-          { href: '/varfor', text: 'Varför' },
-          { href: '/kontakta', text: 'Kontakta' },
+          { href: '#Hurfunkardet', text: 'Hur funkar det?' },
+          { href: '#Varför', text: 'Varför' },
+          { href: '#kontakta', text: 'Kontakta' },
         ],
       },
       legal: {
         title: 'Juridiskt',
         links: [
-          { href: '/leverans-vilkor', text: 'Leveransvillkor' },
+          
           { href: '/Vilkor', text: 'Användarvillkor' },
         ],
       },
@@ -76,7 +76,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
           </div>
         </div>
         <div className="text-center mt-8">
-          <p className="text-gray-500">&copy; {new Date().getFullYear()} {currentTextConfig.allRightsReserved}</p>
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} {currentTextConfig.allRightsReserved}</p>
         </div>
       </div>
     </footer>

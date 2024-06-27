@@ -93,6 +93,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                   {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
                 </li>
               </Link>
+              
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
                 debouncedHandleLinkClick('Varför');
@@ -101,6 +102,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                   {isSwedish ? textConfig.sv.descriptiontree : textConfig.en.descriptiontree}
                 </li>
               </Link>
+
               <Link href="#" onClick={(event) => {
                 event.stopPropagation();
                 debouncedHandleLinkClick('Kontakta');
