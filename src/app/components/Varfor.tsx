@@ -16,7 +16,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
       ],
     },
     sv: {
-      title: 'Varför Journal Kollen?',
+      title: 'Varför Journalkollen?',
       description: 'Att vänta på provsvar från 1177 eller läkare kan vara både stressande och frustrerande. När svaren väl kommer kan de medicinska termerna och siffrorna vara svåra att förstå. Vår AI-tjänst översätter dessa komplexa provsvar till enkel och begriplig text, så att du snabbt och enkelt kan förstå ditt provsvar.',
       points: [
         { title: 'Akronymöversättning', description: 'Provsvar är ofta fyllda med akronymer och förkortningar som kan vara svåra att förstå för gemene man. Med vår tjänst behöver du inte längre leta upp betydelser själv. Vi förklarar tydligt vad varje akronym och förkortning innebär, så att du enkelt kan förstå dina provresultat.' },
