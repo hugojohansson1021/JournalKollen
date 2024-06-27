@@ -33,33 +33,33 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
           answer: 'Så här fungerar tjänsten: Först klistrar du in ditt läkarsvar i chatten här. Sedan trycker du på "Översätt text"-knappen. Därefter betalar du 39 kr med Swish. När betalningen är klar navigerar du tillbaka till journalkollen.se, där ditt svar kommer att finnas i chatten, och du får även en kopia i PDF-format.',
         },
         {
-            question: 'Hur ser ett översatt provsvar ut?',
-            answer: 'AI:n kommer att dela upp ditt provsvar i stycken och översätta stycke för stycka, för att se en video exempel se HÄR ',
-          },
+          question: 'Hur ser ett översatt provsvar ut?',
+          answer: 'AI:n kommer att dela upp ditt provsvar i stycken och översätta stycke för stycka, för att se en video exempel se HÄR ',
+        },
         {
-            question: 'Kostar denna tjänst?',
-            answer: 'Ja, 39 kr. För att kunna erbjuda denna tjänst till så många som möjligt måste vi ta betalt för att kunna underhålla servrar, webbhotell, AI-modell och utvecklingskostnader.',
-          },
-          {
-            question: 'Vilka kan använda tjänsten?',
-            answer: 'Alla kan använda tjänsten, men det är viktigt att veta att om du har ett provsvar som är för stort (t.ex. 20 sidor) kommer AI-chatten att avvisa det, eftersom det blir för mycket text att översätta.',
-          },
-          {
-            question: 'Vilka provsvar är vanligast att översätta?',
-            answer: 'De vanligaste proverna som översätts är Biomarkörprov, blodprov och tumörmarkörer som: PSA (Prostataspecifikt antigen), CEA (Carcinoembryonic antigen), CA 19-9 (Cancerantigen 19-9), CA 125 (Cancerantigen 125), AFP (Alfafetoprotein), hCG (Humant koriongonadotropin), HER2 (Human epidermal tillväxtfaktorreceptor 2).',
-          },
-          {
-            question: 'Hur får jag min översättning?',
-            answer: 'Det översatta provsvaret kommer du att få på två sätt: först kommer svaret i chatten, men du får även en kopia automatiskt nedladdad till din enhet.',
-          },
-          {
-            question: 'Kan jag lita på en AI?',
-            answer: 'Ja, vår AI-chat använder sig av ett strikt svarprotokoll. Detta betyder att AI inte kommer att anta eller gissa något. Informationen som AI använder sig av kommer från strikt pålitliga medicinska publikationer.',
-          },
-          {
-            question: 'Kommer jag få läkarrekomendationer?',
-            answer: 'Nej, endast legitimerade läkare får ge medicinska utlåtanden och rekommendationer. Vår AI följer lagen. Vår tjänst översätter och förklarar medicinska termer. Vi rekommenderar ALLTID att alla som använder vår tjänst kontaktar sin läkare angående sina provsvar.',
-          },
+          question: 'Kostar denna tjänst?',
+          answer: 'Ja, 39 kr. För att kunna erbjuda denna tjänst till så många som möjligt måste vi ta betalt för att kunna underhålla servrar, webbhotell, AI-modell och utvecklingskostnader.',
+        },
+        {
+          question: 'Vilka kan använda tjänsten?',
+          answer: 'Alla kan använda tjänsten, men det är viktigt att veta att om du har ett provsvar som är för stort (t.ex. 20 sidor) kommer AI-chatten att avvisa det, eftersom det blir för mycket text att översätta.',
+        },
+        {
+          question: 'Vilka provsvar är vanligast att översätta?',
+          answer: 'De vanligaste proverna som översätts är Biomarkörprov, blodprov och tumörmarkörer som: PSA (Prostataspecifikt antigen), CEA (Carcinoembryonic antigen), CA 19-9 (Cancerantigen 19-9), CA 125 (Cancerantigen 125), AFP (Alfafetoprotein), hCG (Humant koriongonadotropin), HER2 (Human epidermal tillväxtfaktorreceptor 2).',
+        },
+        {
+          question: 'Hur får jag min översättning?',
+          answer: 'Det översatta provsvaret kommer du att få på två sätt: först kommer svaret i chatten, men du får även en kopia automatiskt nedladdad till din enhet.',
+        },
+        {
+          question: 'Kan jag lita på en AI?',
+          answer: 'Ja, vår AI-chat använder sig av ett strikt svarprotokoll. Detta betyder att AI inte kommer att anta eller gissa något. Informationen som AI använder sig av kommer från strikt pålitliga medicinska publikationer.',
+        },
+        {
+          question: 'Kommer jag få läkarrekomendationer?',
+          answer: 'Nej, endast legitimerade läkare får ge medicinska utlåtanden och rekommendationer. Vår AI följer lagen. Vår tjänst översätter och förklarar medicinska termer. Vi rekommenderar ALLTID att alla som använder vår tjänst kontaktar sin läkare angående sina provsvar.',
+        },
       ],
     },
   };
@@ -88,13 +88,13 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
             </motion.h2>
           </div>
 
-          <div className="flex justify-center">
-            <div className="space-y-4">
-              {currentTextConfig.questions.map((item, index) => (
-                <div key={index} className="bg-[#faeef0] p-4 rounded-lg shadow-md">
+          <div className="flex flex-wrap justify-center">
+            {currentTextConfig.questions.map((item, index) => (
+              <div key={index} className="w-full md:w-1/2 p-2">
+                <div className="bg-[#faeef0] p-4 rounded-lg shadow-md">
                   <button
                     onClick={() => handleToggle(index)}
-                    className="flex justify-between items-center w-64 md:w-96 text-left"
+                    className="flex justify-between items-center w-full text-left"
                   >
                     <span className="text-lg font-medium text-gray-900">{item.question}</span>
                     <svg
@@ -116,14 +116,14 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
                       transition={{ duration: 0.3 }}
                       className="mt-2"
                     >
-                      <div className="pl-6 w-64 md:w-96">
+                      <div className="pl-6">
                         <p className="text-gray-700">{item.answer}</p>
                       </div>
                     </motion.div>
                   )}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
