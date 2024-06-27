@@ -1,11 +1,8 @@
-// Navbar.tsx
-
 'use client';
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Import Image component from next/image
-import { motion, AnimatePresence } from 'framer-motion';
-/* eslint-disable react/no-unescaped-entities */
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isSwedish, setIsSwedish }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,27 +42,24 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
     },
   };
 
+  const baseUrl = 'https://www.journalkollen.se';
+
   return (
     <>
       <nav className="fixed w-full z-50 p-2 bg-opacity-25 backdrop-blur-lg shadow-lg " style={{ backgroundColor: '#c12043' }}>
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-black">
-          {/* New container for site title and hamburger menu */}
           <div className="flex justify-between items-center w-full md:w-auto mr-3">
-          <Link href="https://www.journalkollen.se/" className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white rounded-full ml-10">
-  {/* Replace text with Image component */}
-  <Image
-    src="/Logo.png"
-    alt="Journal Kollen Logo"
-    width={230}
-    height={90}
-    className="sm:w-auto"
-  />
-         </Link>
-
-            {/* Updated clickable area for hamburger icon */}
+            <Link href={`${baseUrl}/`} className="flex justify-center items-center w-full md:w-auto text-3xl font-bold text-center z-10 text-white rounded-full ml-10">
+              <Image
+                src="/Logo.png"
+                alt="Journal Kollen Logo"
+                width={230}
+                height={90}
+                className="sm:w-auto"
+              />
+            </Link>
             <div className={`md:hidden flex ${isMenuOpen ? 'is-active' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <div className=" m-0">
-                {/* Hamburger icon with three bars */}
                 <span className="navbar_toggle bg-black bar "></span>
                 <span className="navbar_toggle bg-black bar"></span>
                 <span className="navbar_toggle bg-black bar"></span>
@@ -73,38 +67,35 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
             </div>
           </div>
 
-          {/* Menu links */}
           <div className={`absolute md:relative top-full left-0 right-0 md:top-auto mt-4 md:mt-0 ${isMenuOpen ? 'flex' : 'hidden'} flex-col items-center md:flex md:flex-row`}>
             <div className="absolute top-0 mr-5 ml-5 w-full h-full bg-[#d1566b] bg-opacity-90 backdrop-blur-lg md:hidden rounded-2xl"></div>
             <ul className="relative w-full text-center md:flex md:flex-row md:space-x-4 ">
-              <Link href="#" onClick={(event) => {
-                event.stopPropagation();
+              <Link href={`${baseUrl}/#Home`} onClick={(event) => {
+                event.preventDefault();
                 debouncedHandleLinkClick('Home');
               }}>
-                <li className=" rounded-full text-white text-xl text-bold px-4 py-2  cursor-pointer hover:underline decoration-white">
+                <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptionone : textConfig.en.descriptionone}
                 </li>
               </Link>
-              <Link href="#" onClick={(event) => {
-                event.stopPropagation();
+              <Link href={`${baseUrl}/#Hurfunkardet`} onClick={(event) => {
+                event.preventDefault();
                 debouncedHandleLinkClick('Hurfunkardet');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontwo : textConfig.en.descriptiontwo}
                 </li>
               </Link>
-              
-              <Link href="#" onClick={(event) => {
-                event.stopPropagation();
+              <Link href={`${baseUrl}/#Varför`} onClick={(event) => {
+                event.preventDefault();
                 debouncedHandleLinkClick('Varför');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
                   {isSwedish ? textConfig.sv.descriptiontree : textConfig.en.descriptiontree}
                 </li>
               </Link>
-
-              <Link href="#" onClick={(event) => {
-                event.stopPropagation();
+              <Link href={`${baseUrl}/#Kontakta`} onClick={(event) => {
+                event.preventDefault();
                 debouncedHandleLinkClick('Kontakta');
               }}>
                 <li className="rounded-full text-white text-xl text-bold px-4 py-2 cursor-pointer hover:underline decoration-white">
@@ -112,9 +103,7 @@ const Navbar: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
                 </li>
               </Link>
             </ul>
-
-            {/* Toggle switch */}
-            <div className="flex items-center space-x-2 mt-4 mb-4 ">
+            <div className="flex items-center space-x-2 mt-4 mb-4">
               <span className={`text-white blur-none ${isSwedish ? 'font-bold blur-none text-black' : ''}`}>SV</span>
               <label className="inline-flex relative items-center cursor-pointer">
                 <input
