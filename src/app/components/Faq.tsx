@@ -25,7 +25,7 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
     sv: {
       questions: [
         {
-          question: 'Vad är Journalkollen.se',
+          question: 'Vad är Journalkollen.se?',
           answer: 'Journalkollen.se är en internettjänst som erbjuder översättning av avancerade medicinska texter genom att använda en AI-modell. Denna AI-modell översätter medicinska termer och akronymer till begriplig text.',
         },
         {
@@ -34,7 +34,7 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
         },
         {
           question: 'Hur ser ett översatt provsvar ut?',
-          answer: 'AI:n kommer att dela upp ditt provsvar i stycken och översätta stycke för stycka, för att se en video exempel se HÄR ',
+          answer: 'AI:n kommer att dela upp ditt provsvar i stycken och översätta stycke för stycke, för att se en video exempel se HÄR ',
         },
         {
           question: 'Kostar denna tjänst?',
@@ -96,7 +96,7 @@ const Faq: React.FC<FaqProps> = ({ isSwedish, setIsSwedish }) => {
                     onClick={() => handleToggle(index)}
                     className="flex justify-between items-center w-full text-left"
                   >
-                    <span className="text-lg font-medium text-gray-900">{item.question}</span>
+                    <h4 className="text-lg font-medium text-gray-900">{item.question}</h4>
                     <svg
                       className={`h-6 w-6 transform transition-transform ${
                         openIndex === index ? 'rotate-180' : 'rotate-0'
