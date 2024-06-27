@@ -102,7 +102,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
     const watermarkImage = 'LogoGray.png'; // Replace with your watermark image path
   
     const addWatermark = (pdf: jsPDF, x: number, y: number) => {
-      pdf.addImage(watermarkImage, 'PNG', x, y, 60, 30); // Adjust the size and position as needed
+      pdf.addImage(watermarkImage, 'PNG', x, y, 70, 30); // Adjust the size and position as needed
     };
   
     const addPageWithWatermark = (pdf: jsPDF) => {
