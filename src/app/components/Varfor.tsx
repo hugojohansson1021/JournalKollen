@@ -32,7 +32,7 @@ const SecurityInfo: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<
   const currentTextConfig = isSwedish ? textConfig.sv : textConfig.en;
 
   return (
-    <section id='Varför' className=" py-12 px-4 sm:px-6 lg:px-8 mt-12 shadow-lg">
+    <section id='Varför' className=" py-12 px-4 sm:px-6 lg:px-8 mt-12 ">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col justify-center text-center mb-8">
           <motion.h2
