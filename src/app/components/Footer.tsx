@@ -17,8 +17,15 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
       legal: {
         title: 'Legal',
         links: [
-          
           { href: '/anvandar-vilkor', text: 'User Terms' },
+        ],
+      },
+      socialmedia: {
+        title: 'Social Media',
+        links: [
+          { href: 'https://www.facebook.com/profile.php?id=61561660383575', text: 'Facebook' },
+          { href: 'https://www.instagram.com/journalkollen/', text: 'Instagram' },
+          { href: 'https://www.linkedin.com/company/103909229/admin/dashboard/', text: 'linkedIn' },
         ],
       },
       allRightsReserved: 'All rights reserved.',
@@ -36,8 +43,15 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
       legal: {
         title: 'Juridiskt',
         links: [
-          
           { href: '/Vilkor', text: 'Användarvillkor' },
+        ],
+      },
+      socialmedia: {
+        title: 'Sociala Medier',
+        links: [
+          { href: 'https://www.facebook.com/profile.php?id=61561660383575', text: 'Facebook' },
+          { href: '/https://www.instagram.com/journalkollen/', text: 'Instagram' },
+          { href: 'https://www.linkedin.com/company/103909229/admin/dashboard/', text: 'LinkedIn' },
         ],
       },
       allRightsReserved: 'Alla rättigheter förbehållna.',
@@ -49,7 +63,8 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
   return (
     <footer className="bg-[#c12043] text-white w-full py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8">
+
           <div className="mb-8 sm:mb-0">
             <h2 className="text-lg font-bold mb-4">{currentTextConfig.navigation.title}</h2>
             <ul className="space-y-2">
@@ -62,7 +77,8 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
               ))}
             </ul>
           </div>
-          <div>
+
+          <div className="mb-8 sm:mb-0">
             <h2 className="text-lg font-bold mb-4">{currentTextConfig.legal.title}</h2>
             <ul className="space-y-2">
               {currentTextConfig.legal.links.map((link, index) => (
@@ -74,7 +90,22 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
               ))}
             </ul>
           </div>
+
+          <div>
+            <h2 className="text-lg font-bold mb-4">{currentTextConfig.socialmedia.title}</h2>
+            <ul className="space-y-2">
+              {currentTextConfig.socialmedia.links.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href}>
+                    <span className="hover:text-gray-400 cursor-pointer">{link.text}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
+
         <div className="text-center mt-8">
           <p className="text-gray-400">&copy; {new Date().getFullYear()} {currentTextConfig.allRightsReserved}</p>
         </div>
