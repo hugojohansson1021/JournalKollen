@@ -1,5 +1,6 @@
 import React, { FormEvent, useRef, useState, useEffect } from 'react';
 import { createWorker } from 'tesseract.js';
+import jsPDF from 'jspdf';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
@@ -117,8 +118,162 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
     }
   };
 
+  const stripHtmlTags = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || "";
+  };
+
+  const formatPdfContent = (content: string) => {
+    const sections = content.split(/(?=Sammanfattning|Förklaring)/);
+    let formattedContent = '';
+
+    sections.forEach(section => {
+      const lines = section.split('\n');
+      let sectionContent = '';
+
+      lines.forEach(line => {
+        if (line.trim().startsWith('Sammanfattning') || line.trim().startsWith('Förklaring')) {
+          sectionContent += `\n\n${line.trim()}\n\n`;
+        } else if (line.trim().startsWith('-')) {
+          sectionContent += `\n${line.trim()}\n`;
+        } else {
+          sectionContent += `${line.trim()} `;
+        }
+      });
+
+      formattedContent += sectionContent.trim() + '\n\n';
+    });
+
+    return formattedContent.trim();
+  };
+
   const generateAndDownloadPdf = () => {
-    // ... (PDF generation code remains the same)
+    const pdfContent = pdfContentRef.current;
+    if (!pdfContent) return;
+  
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - margin * 2;
+    const titleSize = 16;
+    const textSize = 12;
+    const lineHeight = textSize * 1.5;
+  
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(titleSize);
+    pdf.text("Journalkollen AI Svar", pageWidth / 2, margin, { align: "center" });
+  
+    let y = margin + titleSize + 10;
+  
+    const addWatermark = () => {
+      pdf.addImage('LogoGray.png', 'PNG', pageWidth - 90, pageHeight - 50, 70, 30);
+    };
+  
+    const addPage = () => {
+      pdf.addPage();
+      addWatermark();
+      return margin;
+    };
+  
+    addWatermark();
+  
+    const renderFormattedText = (text: string) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      const elements = doc.body.childNodes;
+  
+      elements.forEach((element) => {
+        if (element.nodeType === Node.ELEMENT_NODE) {
+          const tagName = (element as Element).tagName.toLowerCase();
+          const innerText = (element as Element).textContent || '';
+  
+          switch (tagName) {
+            case 'p':
+              const lines = pdf.splitTextToSize(innerText, contentWidth);
+              lines.forEach((line: string) => {
+                if (y + lineHeight > pageHeight - margin) {
+                  y = addPage();
+                }
+                pdf.setFont("helvetica", "normal");
+                pdf.setFontSize(textSize);
+                pdf.text(line, margin, y);
+                y += lineHeight;
+              });
+              y += lineHeight / 2; // Add some space after paragraphs
+              break;
+            case 'strong':
+            case 'b':
+              pdf.setFont("helvetica", "bold");
+              pdf.setFontSize(textSize);
+              pdf.text(innerText, margin, y);
+              y += lineHeight;
+              break;
+            case 'em':
+            case 'i':
+              pdf.setFont("helvetica", "italic");
+              pdf.setFontSize(textSize);
+              pdf.text(innerText, margin, y);
+              y += lineHeight;
+              break;
+            case 'ul':
+            case 'ol':
+              (element as Element).querySelectorAll('li').forEach((li, index) => {
+                const bulletPoint = tagName === 'ul' ? '• ' : `${index + 1}. `;
+                const listItemText = bulletPoint + (li.textContent || '');
+                const listItemLines = pdf.splitTextToSize(listItemText, contentWidth - 5);
+                listItemLines.forEach((line: string, lineIndex: number) => {
+                  if (y + lineHeight > pageHeight - margin) {
+                    y = addPage();
+                  }
+                  pdf.setFont("helvetica", "normal");
+                  pdf.setFontSize(textSize);
+                  pdf.text(lineIndex === 0 ? line : '  ' + line, margin, y);
+                  y += lineHeight;
+                });
+              });
+              y += lineHeight / 2; // Add some space after lists
+              break;
+            default:
+              const defaultLines = pdf.splitTextToSize(innerText, contentWidth);
+              defaultLines.forEach((line: string) => {
+                if (y + lineHeight > pageHeight - margin) {
+                  y = addPage();
+                }
+                pdf.setFont("helvetica", "normal");
+                pdf.setFontSize(textSize);
+                pdf.text(line, margin, y);
+                y += lineHeight;
+              });
+          }
+        } else if (element.nodeType === Node.TEXT_NODE && element.textContent?.trim()) {
+          const lines = pdf.splitTextToSize(element.textContent.trim(), contentWidth);
+          lines.forEach((line: string) => {
+            if (y + lineHeight > pageHeight - margin) {
+              y = addPage();
+            }
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(textSize);
+            pdf.text(line, margin, y);
+            y += lineHeight;
+          });
+        }
+      });
+    };
+  
+    const responseMessages = messages.filter(
+      message => message.type === 'response' && 
+      message.text !== 'Jag är en chatbot som kan hjälpa dig förstå dina läkarsvar eller provsvar'
+    );
+  
+    responseMessages.forEach((message, index) => {
+      if (index > 0) {
+        y = addPage(); // Start each response on a new page
+      }
+      renderFormattedText(message.text);
+    });
+  
+    pdf.save('Journalkollen_AI_Svar.pdf');
   };
 
   return (
@@ -133,7 +288,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
             <span dangerouslySetInnerHTML={{ __html: message.text }}></span>
           </div>
         ))}
-        {isLoading && <div className="text-gray-500">Loading...</div>}
+        {isLoading && <div className="text-gray-500">Svaret kan ta några sekunder</div>}
         {error && <div className="text-red-500">{error}</div>}
       </div>
       <form onSubmit={handleSubmit} className="mb-4">
@@ -144,6 +299,14 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
           disabled={isLoading}
           className="w-full p-2 border border-gray-300 rounded"
           rows={4}
+          style={{
+            flexGrow: 1,
+            padding: '10px',
+            border: '1px solid #000000',
+            borderRadius: '10px',
+            fontSize: '12px',
+            minHeight: '130px'
+          }}
         />
         <div className="flex items-center mb-2">
           <input
@@ -151,8 +314,10 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
             checked={isChecked}
             onChange={(e) => setIsChecked(e.target.checked)}
             className="mr-2 w-5 h-5"
+            style={{ marginRight: '10px', width: '30px', height: '30px' }}
           />
-          <label>Jag godkänner användarvillkoren</label>
+          <label>Användarvillkor</label>
+          <Link href="/terms" className="ml-2">ℹ️</Link>
         </div>
         <input
           type="file"
@@ -167,7 +332,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
           disabled={isLoading}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          {file ? 'Ladda upp fil' : 'Översätt text'}
+          {isLoading ? 'Bearbetar...' : 'Översätt'}
         </button>
       </form>
       <div ref={pdfContentRef} className="hidden">
