@@ -11,7 +11,11 @@
   "dependencies": {
     "@heroicons/react": "^2.1.4",
     "@next/third-parties": "^14.2.3",
+    "@tensorflow/tfjs-node": "^4.20.0",
     "dotenv": "^16.4.5",
+    "file-type": "^19.0.0",
+    "formidable": "^3.5.1",
+    "formidable-serverless": "^1.1.1",
     "framer-motion": "^11.2.6",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
@@ -22,9 +26,12 @@
     "react": "^18",
     "react-dom": "^18",
     "react-toastify": "^10.0.5",
+    "tesseract.js": "^5.1.0",
     "universal-analytics": "^0.5.3"
   },
   "devDependencies": {
+    "@types/file-type": "^10.9.1",
+    "@types/formidable": "^3.4.5",
     "@types/node": "^20",
     "@types/pdf-parse": "^1.1.4",
     "@types/react": "^18",

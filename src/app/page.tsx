@@ -9,6 +9,8 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import Chatbot from "./components/AiChat";
 import Faq from "./components/Faq";
+import NewChat from "./components/NewChat";
+import NewChatbot from "./components/NewChat";
 
 
 export default function Home() {
@@ -23,6 +25,7 @@ export default function Home() {
 
      <Chatbot apiEndpoint="/api/ai" />
      
+     <NewChatbot apiEndpoint="/api/newAI"/>
    
 
      <Hurfunkar isSwedish={isSwedish} setIsSwedish={setIsSwedish} />
