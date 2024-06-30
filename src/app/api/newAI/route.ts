@@ -7,6 +7,8 @@ const openai = new OpenAI({
 
 const assistantId = 'asst_kEblhwMnLn6hr7uTZ4VqfpqA';
 
+export const maxDuration = 50;
+
 export async function POST(req: NextRequest) {
   try {
     const { question } = await req.json();
