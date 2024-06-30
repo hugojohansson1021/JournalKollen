@@ -30,7 +30,7 @@ const Footer: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<React.
           { href: '/', text: 'Startsida' },
           { href: '#Hurfunkardet', text: 'Hur funkar det?' },
           { href: '#Varför', text: 'Varför' },
-          { href: '#kontakta', text: 'Kontakta' },
+          { href: '#Kontakta', text: 'Kontakta' },
         ],
       },
       legal: {

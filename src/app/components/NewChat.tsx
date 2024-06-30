@@ -349,7 +349,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
     />
     <label
       htmlFor="terms"
-      className="flex items-center cursor-pointer before:content-[''] before:w-[30px] before:h-[30px] before:border before:border-red-500 before:rounded before:mr-2 before:bg-white"
+      className=" flex items-center cursor-pointer before:content-[''] before:w-[30px] before:h-[30px] before:border before:border-red-500 before:rounded before:mr-2 before:bg-white"
     >
       <span className={`absolute left-[9px] top-[5px] w-[12px] h-[20px] border-r-4 border-b-4 border-red-500 transform rotate-45 ${isChecked ? 'opacity-100' : 'opacity-0'}`}></span>
     </label>
