@@ -18,7 +18,7 @@ interface Message {
 
 const Chatbot: React.FC<ChatbotProps> = ({ 
     apiEndpoint, 
-    botName = <span className=" text-[#c12043]">Journalkollen AI</span>, 
+    botName = <span className=" text-[#c12043] block text-center text-4xl mt-12 ">Journalkollen AI</span>, 
     botAvatarSrc = '/Doctor.png' 
   }) => {
   const [question, setQuestion] = useState('');
@@ -280,41 +280,61 @@ const Chatbot: React.FC<ChatbotProps> = ({
     pdf.save('Journalkollen_AI_Svar.pdf');
   };
 
+
+
+
+  const LoadingAnimation = () => (
+    <div className="flex justify-center items-center space-x-2 mb-2">
+        <div className='my-0 mx-0'>Loading</div>
+      <div className="w-2 h-2 bg-[#c12043] rounded-full animate-bounce"></div>
+      <div className="w-2 h-2 bg-[#c12043] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+      <div className="w-2 h-2 bg-[#c12043] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+    </div>
+  );
+
+
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{botName}</h1>
-      <div ref={chatContainerRef} className="bg-white p-4 rounded-lg mb-4 h-96 overflow-y-auto">
-        {messages.map((message, index) => (
-          <div key={index} className={`mb-2 rounded-md py-2 px-3 max-w-[80%] ${
-            message.type === 'response' 
-              ? 'bg-[#faeef0] text-[#c12043] self-start mr-auto' 
-              : 'bg-[#e6f3ff] text-[#0066cc] self-end ml-auto'
-          }`}>
-            {message.type === 'response' && (
-              <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
-            )}
-            <span dangerouslySetInnerHTML={{ __html: message.text }}></span>
-          </div>
-        ))}
-        {isLoading && <div className="text-gray-500">Svaret kan ta några sekunder</div>}
-        {error && <div className="text-red-500">{error}</div>}
-      </div>
+      <div ref={chatContainerRef} className="bg-white p-4 rounded-lg mb-4 h-96 overflow-y-auto shadow-lg">
+  {messages.map((message, index) => (
+    <div key={index} className={`mb-2 rounded-md py-2 px-3 max-w-[80%] ${
+      message.type === 'response' 
+        ? 'bg-[#faeef0] text-[#c12043] self-start mr-auto' 
+        : 'bg-[#e6f3ff] text-[#0066cc] self-end ml-auto'
+    }`}>
+      {message.type === 'response' && (
+        <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
+      )}
+      <span dangerouslySetInnerHTML={{ __html: message.text }}></span>
+    </div>
+  ))}
+  {isLoading && (
+    <div className="bg-[#faeef0] text-[#c12043] self-start mr-auto mb-2 rounded-md py-2 px-3 max-w-[80%]">
+      <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
+      <LoadingAnimation />
+    </div>
+  )}
+  {error && <div className="text-red-500">{error}</div>}
+</div>
       <form onSubmit={handleSubmit} className="mb-4">
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Klistra in ditt läkarsvar här..."
           disabled={isLoading}
-          className="w-full p-2 border border-gray-300 rounded mb-2"
+          className="w-full p-2 border border-gray-100 rounded mb-2 shadow-md"
           rows={4}
           style={{
             flexGrow: 1,
             padding: '10px',
-            border: '1px solid #000000',
+            border: '1px solid #dddddd',
             borderRadius: '10px',
             fontSize: '12px',
             minHeight: '130px',
-            color:'#000'
+            color:'#000',
+            
           }}
         />
         <div className="flex justify-between items-center mb-2">
