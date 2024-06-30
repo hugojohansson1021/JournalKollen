@@ -16,7 +16,11 @@ interface Message {
   text: string;
 }
 
-const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen AI', botAvatarSrc = '/Doctor.png' }) => {
+const Chatbot: React.FC<ChatbotProps> = ({ 
+    apiEndpoint, 
+    botName = <span className=" text-[#c12043]">Journalkollen AI</span>, 
+    botAvatarSrc = '/Doctor.png' 
+  }) => {
   const [question, setQuestion] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     { type: 'response', text: 'Jag är en chatbot som kan hjälpa dig förstå dina läkarsvar eller provsvar' },
@@ -279,9 +283,13 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{botName}</h1>
-      <div ref={chatContainerRef} className="bg-gray-100 p-4 rounded-lg mb-4 h-96 overflow-y-auto">
+      <div ref={chatContainerRef} className="bg-white p-4 rounded-lg mb-4 h-96 overflow-y-auto">
         {messages.map((message, index) => (
-          <div key={index} className={`mb-2 ${message.type === 'response' ? 'text-blue-600' : 'text-gray-800'}`}>
+          <div key={index} className={`mb-2 rounded-md py-2 px-3 max-w-[80%] ${
+            message.type === 'response' 
+              ? 'bg-[#faeef0] text-[#c12043] self-start mr-auto' 
+              : 'bg-[#e6f3ff] text-[#0066cc] self-end ml-auto'
+          }`}>
             {message.type === 'response' && (
               <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
             )}
@@ -297,7 +305,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Klistra in ditt läkarsvar här..."
           disabled={isLoading}
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-gray-300 rounded mb-2"
           rows={4}
           style={{
             flexGrow: 1,
@@ -305,32 +313,43 @@ const Chatbot: React.FC<ChatbotProps> = ({ apiEndpoint, botName = 'Journalkollen
             border: '1px solid #000000',
             borderRadius: '10px',
             fontSize: '12px',
-            minHeight: '130px'
+            minHeight: '130px',
+            color:'#000'
           }}
         />
-        <div className="flex items-center mb-2">
+        <div className="flex justify-between items-center mb-2">
+        <div className="flex items-center">
+  <div className="relative inline-block">
+    <input
+      type="checkbox"
+      id="terms"
+      checked={isChecked}
+      onChange={(e) => setIsChecked(e.target.checked)}
+      className="hidden"
+    />
+    <label
+      htmlFor="terms"
+      className="flex items-center cursor-pointer before:content-[''] before:w-[30px] before:h-[30px] before:border before:border-red-500 before:rounded before:mr-2 before:bg-white"
+    >
+      <span className={`absolute left-[9px] top-[5px] w-[12px] h-[20px] border-r-4 border-b-4 border-red-500 transform rotate-45 ${isChecked ? 'opacity-100' : 'opacity-0'}`}></span>
+    </label>
+  </div>
+  <label htmlFor="terms" className="text-black cursor-pointer">Användarvillkor</label>
+  <Link href="/Vilkor" className="ml-2">ℹ️</Link>
+</div>
           <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-            className="mr-2 w-5 h-5"
-            style={{ marginRight: '10px', width: '30px', height: '30px' }}
+            type="file"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            accept=".txt,.pdf,.png,.jpg,.jpeg"
+            className="w-1/2 text-black"
           />
-          <label>Användarvillkor</label>
-          <Link href="/terms" className="ml-2">ℹ️</Link>
         </div>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          ref={fileInputRef}
-          accept=".txt,.pdf,.png,.jpg,.jpeg"
-          className="mb-2"
-        />
-        {file && <div className="mb-2">Vald fil: {file.name}</div>}
+        {file && <div className="mb-2 text-black">Vald fil: {file.name}</div>}
         <button
           type="submit"
           disabled={isLoading}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-[#c12043] text-white px-4 py-2 rounded hover:bg-[#ac5568] w-full"
         >
           {isLoading ? 'Bearbetar...' : 'Översätt'}
         </button>
