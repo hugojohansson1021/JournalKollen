@@ -67,7 +67,7 @@ const ContactForm: React.FC<{ isSwedish: boolean; setIsSwedish: React.Dispatch<R
   };
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:carlhugojohansson@outlook.com';
+    window.location.href = 'mailto:journalkollen@gmail.com';
   };
 
   return (
