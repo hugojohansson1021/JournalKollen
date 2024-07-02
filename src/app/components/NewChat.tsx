@@ -382,22 +382,18 @@ const Chatbot: React.FC<ChatbotProps> = ({
         />
         <div className="flex justify-between items-center mb-2">
         <div className="flex items-center">
-  <div className="relative inline-block">
+        <div className="dark:bg-black/10">
+  <label className="text-white">
     <input
       type="checkbox"
       id="terms"
       checked={isChecked}
       onChange={(e) => setIsChecked(e.target.checked)}
-      className="hidden"
+      className="dark:border-white-400/20 dark:scale-100 transition-all duration-500 ease-in-out dark:hover:scale-110 dark:checked:scale-100 w-10 h-10"
     />
-    <label
-      htmlFor="terms"
-      className=" flex items-center cursor-pointer before:content-[''] before:w-[30px] before:h-[30px] before:border before:border-red-500 before:rounded before:mr-2 before:bg-white"
-    >
-      <span className={`absolute left-[9px] top-[5px] w-[12px] h-[20px] border-r-4 border-b-4 border-red-500 transform rotate-45 ${isChecked ? 'opacity-100' : 'opacity-0'}`}></span>
-    </label>
-  </div>
-  <label htmlFor="terms" className="text-black cursor-pointer">Användarvillkor</label>
+  </label>
+</div>
+  <label htmlFor="terms" className="text-black cursor-pointer ml-2">Användarvillkor</label>
   <Link href="/Vilkor" className="ml-2">ℹ️</Link>
 </div>
           <input
