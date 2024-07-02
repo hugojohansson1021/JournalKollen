@@ -159,11 +159,11 @@ const Chatbot: React.FC<ChatbotProps> = ({
     const pdf = new jsPDF('p', 'mm', 'a4');
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-    const margin = 20;
+    const margin = 10;
     const contentWidth = pageWidth - margin * 2;
     const titleSize = 16;
-    const textSize = 12;
-    const lineHeight = textSize * 1.5;
+    const textSize = 11;
+    const lineHeight = textSize * 0.5;
   
     pdf.setFont("helvetica", "bold");
     pdf.setFontSize(titleSize);
@@ -172,7 +172,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
     let y = margin + titleSize + 10;
   
     const addWatermark = () => {
-      pdf.addImage('LogoGray.png', 'PNG', pageWidth - 90, pageHeight - 50, 70, 30);
+      pdf.addImage('LogoGray.png', 'PNG', pageWidth - 60, pageHeight - 30, 50, 20);
     };
   
     const addPage = () => {
@@ -182,6 +182,30 @@ const Chatbot: React.FC<ChatbotProps> = ({
     };
   
     addWatermark();
+  
+    const wrapText = (text: string, maxWidth: number) => {
+      const words = text.split(' ');
+      const lines = [];
+      let currentLine = '';
+  
+      words.forEach(word => {
+        const testLine = currentLine + (currentLine ? ' ' : '') + word;
+        const testWidth = pdf.getStringUnitWidth(testLine) * textSize / pdf.internal.scaleFactor;
+        
+        if (testWidth > maxWidth) {
+          lines.push(currentLine);
+          currentLine = word;
+        } else {
+          currentLine = testLine;
+        }
+      });
+  
+      if (currentLine) {
+        lines.push(currentLine);
+      }
+  
+      return lines;
+    };
   
     const renderFormattedText = (text: string) => {
       const parser = new DOMParser();
@@ -195,70 +219,49 @@ const Chatbot: React.FC<ChatbotProps> = ({
   
           switch (tagName) {
             case 'p':
-              const lines = pdf.splitTextToSize(innerText, contentWidth);
+            case 'strong':
+            case 'b':
+            case 'em':
+            case 'i':
+              pdf.setFont("helvetica", tagName === 'strong' || tagName === 'b' ? "bold" : tagName === 'em' || tagName === 'i' ? "italic" : "normal");
+              pdf.setFontSize(textSize);
+              const lines = wrapText(innerText, contentWidth);
               lines.forEach((line: string) => {
                 if (y + lineHeight > pageHeight - margin) {
                   y = addPage();
                 }
-                pdf.setFont("helvetica", "normal");
-                pdf.setFontSize(textSize);
                 pdf.text(line, margin, y);
                 y += lineHeight;
               });
-              y += lineHeight / 2; // Add some space after paragraphs
-              break;
-            case 'strong':
-            case 'b':
-              pdf.setFont("helvetica", "bold");
-              pdf.setFontSize(textSize);
-              pdf.text(innerText, margin, y);
-              y += lineHeight;
-              break;
-            case 'em':
-            case 'i':
-              pdf.setFont("helvetica", "italic");
-              pdf.setFontSize(textSize);
-              pdf.text(innerText, margin, y);
-              y += lineHeight;
+              y += lineHeight; // Add space after paragraph
               break;
             case 'ul':
             case 'ol':
               (element as Element).querySelectorAll('li').forEach((li, index) => {
                 const bulletPoint = tagName === 'ul' ? '• ' : `${index + 1}. `;
                 const listItemText = bulletPoint + (li.textContent || '');
-                const listItemLines = pdf.splitTextToSize(listItemText, contentWidth - 5);
+                const listItemLines = wrapText(listItemText, contentWidth - 5);
                 listItemLines.forEach((line: string, lineIndex: number) => {
                   if (y + lineHeight > pageHeight - margin) {
                     y = addPage();
                   }
                   pdf.setFont("helvetica", "normal");
                   pdf.setFontSize(textSize);
-                  pdf.text(lineIndex === 0 ? line : '  ' + line, margin, y);
+                  pdf.text(line, margin + (lineIndex === 0 ? 0 : 5), y);
                   y += lineHeight;
                 });
               });
-              y += lineHeight / 2; // Add some space after lists
+              y += lineHeight; // Add space after list
               break;
-            default:
-              const defaultLines = pdf.splitTextToSize(innerText, contentWidth);
-              defaultLines.forEach((line: string) => {
-                if (y + lineHeight > pageHeight - margin) {
-                  y = addPage();
-                }
-                pdf.setFont("helvetica", "normal");
-                pdf.setFontSize(textSize);
-                pdf.text(line, margin, y);
-                y += lineHeight;
-              });
           }
         } else if (element.nodeType === Node.TEXT_NODE && element.textContent?.trim()) {
-          const lines = pdf.splitTextToSize(element.textContent.trim(), contentWidth);
+          pdf.setFont("helvetica", "normal");
+          pdf.setFontSize(textSize);
+          const lines = wrapText(element.textContent.trim(), contentWidth);
           lines.forEach((line: string) => {
             if (y + lineHeight > pageHeight - margin) {
               y = addPage();
             }
-            pdf.setFont("helvetica", "normal");
-            pdf.setFontSize(textSize);
             pdf.text(line, margin, y);
             y += lineHeight;
           });
@@ -273,7 +276,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
   
     responseMessages.forEach((message, index) => {
       if (index > 0) {
-        y = addPage(); // Start each response on a new page
+        y = addPage();
       }
       renderFormattedText(message.text);
     });
