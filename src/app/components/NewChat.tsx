@@ -396,15 +396,24 @@ const Chatbot: React.FC<ChatbotProps> = ({
   <label htmlFor="terms" className="text-black cursor-pointer ml-2">Användarvillkor</label>
   <Link href="/Vilkor" className="ml-2">ℹ️</Link>
 </div>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            ref={fileInputRef}
-            accept=".txt,.pdf,.png,.jpg,.jpeg"
-            className="w-1/2 text-black"
-          />
+
+
+
+<div className="grid w-44 max-w-xs items-center gap-1.5">
+  <input
+    className="flex w-full rounded-md border border-red-300 border-input bg-white text-sm text-gray-400 file:border-0 file:bg-[#c12043] file:text-white file:text-sm file:font-medium"
+    type="file"
+    id="picture"
+    onChange={handleFileChange}
+    ref={fileInputRef}
+    accept=".txt,.pdf,.png,.jpg,.jpeg"
+  />
+</div>
+
+
+
         </div>
-        {file && <div className="mb-2 text-black">Vald fil: {file.name}</div>}
+        
         <button
           type="submit"
           disabled={isLoading}
