@@ -165,27 +165,12 @@ const Chatbot: React.FC<ChatbotProps> = ({
     const textSize = 11;
     const lineHeight = textSize * 0.5;
   
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(titleSize);
-    pdf.text("Journalkollen AI Svar", pageWidth / 2, margin, { align: "center" });
+    let pageNumber = 1;
+    let totalPages = 0;
   
-    let y = margin + titleSize + 10;
-  
-    const addWatermark = () => {
-      pdf.addImage('LogoGray.png', 'PNG', pageWidth - 60, pageHeight - 30, 50, 20);
-    };
-  
-    const addPage = () => {
-      pdf.addPage();
-      addWatermark();
-      return margin;
-    };
-  
-    addWatermark();
-  
-    const wrapText = (text: string, maxWidth: number) => {
+    const wrapText = (text: string, maxWidth: number): string[] => {
       const words = text.split(' ');
-      const lines = [];
+      const lines: string[] = [];
       let currentLine = '';
   
       words.forEach(word => {
@@ -207,15 +192,69 @@ const Chatbot: React.FC<ChatbotProps> = ({
       return lines;
     };
   
+    // First pass to count total pages
+    const countPages = () => {
+      let y = margin + titleSize + 10;
+      const responseMessages = messages.filter(
+        message => message.type === 'response' && 
+        message.text !== 'Jag är en chatbot som kan hjälpa dig förstå dina läkarsvar eller provsvar'
+      );
+      responseMessages.forEach((message, index) => {
+        if (index > 0) {
+          totalPages++;
+          y = margin;
+        }
+        const lines = wrapText(message.text.replace(/\*/g, ''), contentWidth);
+        lines.forEach(() => {
+          if (y + lineHeight > pageHeight - margin) {
+            totalPages++;
+            y = margin;
+          }
+          y += lineHeight;
+        });
+        y += lineHeight * 3;
+      });
+      totalPages++;
+    };
+  
+    countPages();
+  
+    const addPageNumber = () => {
+      pdf.setFont("helvetica", "normal");
+      pdf.setFontSize(10);
+      pdf.text(`${pageNumber} (${totalPages})`, pageWidth - margin, pageHeight - margin, { align: "right" });
+      pageNumber++;
+    };
+  
+    const addWatermark = () => {
+      pdf.addImage('LogoGray.png', 'PNG', pageWidth - 70, pageHeight - 35, 55, 25);
+    };
+  
+    const addPage = () => {
+      pdf.addPage();
+      addWatermark();
+      addPageNumber();
+      return margin;
+    };
+  
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(titleSize);
+    pdf.text("Journalkollen AI Svar", pageWidth / 2, margin, { align: "center" });
+  
+    let y = margin + titleSize + 10;
+  
+    addWatermark();
+    addPageNumber();
+  
     const renderFormattedText = (text: string) => {
       const parser = new DOMParser();
-      const doc = parser.parseFromString(text, 'text/html');
+      const doc = parser.parseFromString(text.replace(/\*/g, ''), 'text/html');
       const elements = doc.body.childNodes;
   
       elements.forEach((element) => {
         if (element.nodeType === Node.ELEMENT_NODE) {
           const tagName = (element as Element).tagName.toLowerCase();
-          const innerText = (element as Element).textContent || '';
+          const innerText = ((element as Element).textContent || '').replace(/\*/g, '');
   
           switch (tagName) {
             case 'p':
@@ -233,13 +272,13 @@ const Chatbot: React.FC<ChatbotProps> = ({
                 pdf.text(line, margin, y);
                 y += lineHeight;
               });
-              y += lineHeight; // Add space after paragraph
+              y += lineHeight * 2; // Increased spacing after paragraphs
               break;
             case 'ul':
             case 'ol':
               (element as Element).querySelectorAll('li').forEach((li, index) => {
                 const bulletPoint = tagName === 'ul' ? '• ' : `${index + 1}. `;
-                const listItemText = bulletPoint + (li.textContent || '');
+                const listItemText = bulletPoint + (li.textContent || '').replace(/\*/g, '');
                 const listItemLines = wrapText(listItemText, contentWidth - 5);
                 listItemLines.forEach((line: string, lineIndex: number) => {
                   if (y + lineHeight > pageHeight - margin) {
@@ -251,13 +290,13 @@ const Chatbot: React.FC<ChatbotProps> = ({
                   y += lineHeight;
                 });
               });
-              y += lineHeight; // Add space after list
+              y += lineHeight * 2; // Increased spacing after lists
               break;
           }
         } else if (element.nodeType === Node.TEXT_NODE && element.textContent?.trim()) {
           pdf.setFont("helvetica", "normal");
           pdf.setFontSize(textSize);
-          const lines = wrapText(element.textContent.trim(), contentWidth);
+          const lines = wrapText(element.textContent.trim().replace(/\*/g, ''), contentWidth);
           lines.forEach((line: string) => {
             if (y + lineHeight > pageHeight - margin) {
               y = addPage();
@@ -265,6 +304,7 @@ const Chatbot: React.FC<ChatbotProps> = ({
             pdf.text(line, margin, y);
             y += lineHeight;
           });
+          y += lineHeight; // Add space after text nodes
         }
       });
     };
@@ -279,11 +319,11 @@ const Chatbot: React.FC<ChatbotProps> = ({
         y = addPage();
       }
       renderFormattedText(message.text);
+      y += lineHeight * 3; // Add extra space between different messages
     });
   
     pdf.save('Journalkollen_AI_Svar.pdf');
   };
-
 
 
 
