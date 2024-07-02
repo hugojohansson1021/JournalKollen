@@ -4,6 +4,7 @@ import jsPDF from 'jspdf';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
+import LoadingComponent from './smallComponents/LoadingComponent';
 
 interface ChatbotProps {
   apiEndpoint: string;
@@ -297,27 +298,26 @@ const Chatbot: React.FC<ChatbotProps> = ({
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{botName}</h1>
-      <div ref={chatContainerRef} className="bg-white p-4 rounded-lg mb-4 h-96 overflow-y-auto shadow-lg">
-  {messages.map((message, index) => (
-    <div key={index} className={`mb-2 rounded-md py-2 px-3 max-w-[80%] ${
-      message.type === 'response' 
-        ? 'bg-[#faeef0] text-[#c12043] self-start mr-auto' 
-        : 'bg-[#e6f3ff] text-[#0066cc] self-end ml-auto'
-    }`}>
-      {message.type === 'response' && (
-        <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
-      )}
-      <span dangerouslySetInnerHTML={{ __html: message.text }}></span>
-    </div>
-  ))}
-  {isLoading && (
-    <div className="bg-[#faeef0] text-[#c12043] self-start mr-auto mb-2 rounded-md py-2 px-3 max-w-[80%]">
-      <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
-      <LoadingAnimation />
-    </div>
-  )}
-  {error && <div className="text-red-500">{error}</div>}
-</div>
+      <div ref={chatContainerRef} className="bg-white p-4 rounded-lg mb-4 h-96 overflow-y-auto shadow-lg relative">
+        {messages.map((message, index) => (
+          <div key={index} className={`mb-2 rounded-md py-2 px-3 max-w-[80%] ${
+            message.type === 'response' 
+              ? 'bg-[#faeef0] text-[#c12043] self-start mr-auto' 
+              : 'bg-[#e6f3ff] text-[#0066cc] self-end ml-auto'
+          }`}>
+            {message.type === 'response' && (
+              <img src={botAvatarSrc} alt="Bot Avatar" className="w-8 h-8 rounded-full inline-block mr-2" />
+            )}
+            <span dangerouslySetInnerHTML={{ __html: message.text }}></span>
+          </div>
+        ))}
+        {isLoading && (
+          <div className="absolute inset-0 flex justify-center items-center bg-white bg-opacity-70">
+            <LoadingComponent />
+          </div>
+        )}
+        {error && <div className="text-red-500">{error}</div>}
+      </div>
       <form onSubmit={handleSubmit} className="mb-4">
         <textarea
           value={question}
